@@ -1,0 +1,165 @@
+{
+  "hero": {
+    "widths": [
+      1280,
+      1672
+    ],
+    "avif": true
+  },
+  "intro": {
+    "widths": [
+      570,
+      760,
+      1140,
+      1536
+    ],
+    "avif": true
+  },
+  "avatar-alex": {
+    "widths": [
+      137,
+      182
+    ],
+    "avif": true
+  },
+  "svc-kitchen": {
+    "widths": [
+      544,
+      760,
+      816,
+      1088,
+      1536
+    ],
+    "avif": true
+  },
+  "svc-bath": {
+    "widths": [
+      544,
+      760,
+      816,
+      1088,
+      1536
+    ],
+    "avif": true
+  },
+  "svc-basement": {
+    "widths": [
+      544,
+      816,
+      1024
+    ],
+    "avif": true
+  },
+  "svc-shower": {
+    "widths": [
+      544,
+      760,
+      816,
+      1088,
+      1536
+    ],
+    "avif": true
+  },
+  "svc-exterior": {
+    "widths": [
+      816,
+      1088,
+      1450
+    ],
+    "avif": true
+  },
+  "svc-floor": {
+    "widths": [
+      544,
+      760,
+      816,
+      1088,
+      1536
+    ],
+    "avif": true
+  },
+  "prj-marble": {
+    "widths": [
+      560,
+      760,
+      840,
+      1120,
+      1536
+    ],
+    "avif": true
+  },
+  "prj-bluetile": {
+    "widths": [
+      560,
+      760,
+      840,
+      1120,
+      1536
+    ],
+    "avif": true
+  },
+  "prj-kitchen2": {
+    "widths": [
+      960,
+      1440,
+      1920
+    ],
+    "avif": true
+  },
+  "prj-chevron": {
+    "widths": [
+      560,
+      760,
+      840,
+      1120,
+      1536
+    ],
+    "avif": true
+  },
+  "hotel-room": {
+    "widths": [
+      1032,
+      1548,
+      2064
+    ],
+    "avif": true
+  },
+  "hotel-bath": {
+    "widths": [
+      427,
+      640,
+      854
+    ],
+    "avif": true
+  },
+  "hotel-hall": {
+    "widths": [
+      480,
+      720,
+      960
+    ],
+    "avif": true
+  },
+  "form-tub": {
+    "widths": [
+      1000,
+      1500,
+      2000
+    ],
+    "avif": true
+  },
+  "logo": {
+    "widths": [
+      180,
+      240
+    ],
+    "avif": true
+  },
+  "logo-light": {
+    "widths": [
+      225,
+      300
+    ],
+    "avif": true
+  }
+}
