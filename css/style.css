@@ -2476,6 +2476,31 @@ a.footer__link:focus-visible {
   animation: phone-ring 0.7s var(--ease);
 }
 
+/* ================= Touch screens and compact layouts: no hover zoom on photos
+   (a finger leaves :hover on the last card it touched, and it got in the way of swiping) */
+@media (hover: none), (max-width: 1279px) {
+  .svc-card:hover .svc-card__media img,
+  .svc-card:focus-visible .svc-card__media img,
+  .prj-card:hover .prj-card__media img,
+  .prj-card:focus-visible .prj-card__media img,
+  .hotel-card:hover .hotel-card__media img,
+  .hotel-card:focus-visible .hotel-card__media img {
+    scale: 1;
+  }
+
+  .svc-card:hover .svc-card__media::after,
+  .prj-card:hover .prj-card__media::after,
+  .hotel-card:hover .hotel-card__media::after {
+    opacity: 0;
+  }
+
+  .svc-card:hover .svc-card__title,
+  .prj-card:hover .prj-card__title,
+  .hotel-card:hover .hotel-card__title {
+    color: inherit;
+  }
+}
+
 /* ================= Design-only line breaks */
 
 .br-compact {

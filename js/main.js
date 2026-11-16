@@ -520,7 +520,15 @@
         close(false);
       };
 
-      toggle.addEventListener('click', () => (dd.classList.contains('is-open') ? close(true) : open()));
+      // A tap on the toggle must not first close the list through focusout (touch browsers
+      // don't focus buttons on tap) and then reopen it with the click
+      let pressingToggle = false;
+      toggle.addEventListener('pointerdown', () => (pressingToggle = true));
+      toggle.addEventListener('click', () => {
+        pressingToggle = false;
+        if (dd.classList.contains('is-open')) close(true);
+        else open();
+      });
       toggle.addEventListener('keydown', (e) => {
         if (!['ArrowDown', 'ArrowUp'].includes(e.key)) return;
         e.preventDefault();
@@ -551,6 +559,7 @@
         keys[e.key]();
       });
       menu.addEventListener('focusout', (e) => {
+        if (pressingToggle) return;
         if (!dd.contains(e.relatedTarget)) close(false);
       });
     });
