@@ -191,7 +191,7 @@
     { selector: '.svc-card', effect: 'fade-up', stagger: 100, staggerGroup: 3, media: '(min-width: 1280px)' },
     { selector: '.svc-card', effect: 'fade-up', stagger: 120, staggerGroup: 2, media: '(max-width: 1279px)' },
     { selector: '.why-row', effect: 'fade-up', stagger: 80 },
-    { selector: '.projects__slider', effect: 'fade-up', delay: 100 },
+    { selector: '.projects__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
 
     { selector: '.reviews__summary', effect: 'fade-up' },
     { selector: '.review-card', effect: 'fade-up', stagger: 100, media: '(min-width: 1280px)' },
@@ -292,6 +292,13 @@
       },
     });
     bindDots(swiper, document.querySelector(`[data-dots-for="${name}"]`));
+    // Load every slide's photo once the slider is near, so none decodes in the middle of a swipe
+    const io = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      io.disconnect();
+      el.querySelectorAll('img[loading="lazy"]').forEach((img) => (img.loading = 'eager'));
+    }, { rootMargin: '600px 0px' });
+    io.observe(el);
     return swiper;
   }
 
@@ -575,16 +582,37 @@
     return panel.animate([{ transform: `translateY(${from})` }, { transform: `translateY(${to})` }], timing);
   };
 
+  // Keep the dialog on the visible part of the screen (mobile keyboards shrink it), so the
+  // sheet sits above the keyboard instead of the page being scrolled under it.
+  const vv = window.visualViewport;
+  function fitToViewport() {
+    if (!modal?.open || !vv || !compactMq.matches) {
+      modal?.style.removeProperty('height');
+      modal?.style.removeProperty('top');
+      return;
+    }
+    modal.style.height = `${vv.height}px`;
+    modal.style.top = `${vv.offsetTop}px`;
+  }
+  vv?.addEventListener('resize', fitToViewport);
+  vv?.addEventListener('scroll', fitToViewport);
+
   function openModal(view = 'form', trigger = document.activeElement) {
     if (!modal) return;
     clearTimeout(closeTimer);
     setModalView(view);
     if (!modal.open) {
       returnFocus = trigger;
+      const panel = modal.querySelector('.modal__panel');
+      // park the sheet below the screen before the dialog's first paint
+      if (sheetMode()) panel.style.transform = 'translateY(100%)';
       modal.showModal();
       root.classList.add('is-locked');
       lenis?.stop();
-      if (sheetMode()) slideSheet('100%', '0', SHEET_IN);
+      fitToViewport();
+      if (sheetMode()) {
+        slideSheet('100%', '0', SHEET_IN).finished.then(() => panel.style.removeProperty('transform')).catch(() => {});
+      }
       requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('is-open')));
     }
     const focusTarget = view === 'sent' || compactMq.matches
@@ -600,6 +628,7 @@
     closeTimer = setTimeout(() => {
       modal.close();
       modal.querySelector('.modal__panel').getAnimations().forEach((a) => a.cancel());
+      fitToViewport();
       root.classList.remove('is-locked');
       lenis?.start();
       setModalView('form');

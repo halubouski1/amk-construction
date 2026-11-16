@@ -250,7 +250,8 @@
     background: var(--c-bg);
     visibility: hidden;
     clip-path: inset(0 0 100% 0);
-    transition: clip-path 0.6s var(--ease-out), visibility 0s linear 0.6s;
+    /* closing: a little slower and eased at both ends */
+    transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1), visibility 0s linear 0.8s;
   }
 
   .mnav.is-open {
@@ -410,12 +411,16 @@
     background: rgba(244, 243, 241, 0.96);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    opacity: 0;
     translate: 0 110%;
-    transition: translate 0.45s var(--ease-out);
+    transition: translate 0.6s cubic-bezier(0.4, 0, 0.9, 0.6), opacity 0.4s var(--ease);
   }
 
+  /* comes up slowly and softly */
   .sticky-cta.is-visible {
+    opacity: 1;
     translate: 0 0;
+    transition: translate 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s var(--ease);
   }
 
   .sticky-cta__call {
@@ -1155,6 +1160,7 @@
   }
 
   .field-error {
+    margin-top: m(-2);
     font-size: m(13);
   }
 
@@ -1285,7 +1291,11 @@
     transition: none;
   }
 
+  /* clip, not auto: while the sheet is parked below the screen the dialog would become
+     scrollable and focusing the title scrolled it up, then the sheet "fell" back down.
+     The panel scrolls itself (max-height + overflow-y: auto). */
   .modal {
+    overflow: clip;
     overscroll-behavior: contain;
   }
 
