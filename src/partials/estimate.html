@@ -1,0 +1,48 @@
+    <section class="estimate" id="estimate" aria-labelledby="estimate-title">
+      <div class="estimate__media">
+        <picture><source type="image/avif" srcset="/assets/images/form-tub-1000.avif 1000w, /assets/images/form-tub-1500.avif 1500w, /assets/images/form-tub-2000.avif 2000w" sizes="(max-width: 1279px) 100vw, (min-width: 1920px) 1000px, 750px"><img src="/assets/images/form-tub-2000.webp" srcset="/assets/images/form-tub-1000.webp 1000w, /assets/images/form-tub-1500.webp 1500w, /assets/images/form-tub-2000.webp 2000w" sizes="(max-width: 1279px) 100vw, (min-width: 1920px) 1000px, 750px" width="860" height="750" alt="Remodeled bathroom with a double vanity and freestanding tub" loading="lazy" decoding="async"></picture>
+      </div>
+      <div class="estimate__panel">
+        <h2 class="title" id="estimate-title">Get a free <br>written estimate</h2>
+        <p class="lead estimate__lead">Tell us about your project. We call <br>back to book a visit and measure.</p>
+        <form class="estimate__form" action="" method="post" novalidate data-form>
+          <div class="form-grid">
+            <div class="field-wrap">
+              <label class="field-label" for="f-name">Name</label>
+              <input class="field" id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+            </div>
+            <div class="field-wrap">
+              <label class="field-label" for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input class="field" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(302) 000‑0000" required data-validate="phone" aria-describedby="f-phone-error">
+              <p class="field-error" id="f-phone-error"></p>
+            </div>
+            <div class="field-wrap">
+              <label class="field-label" for="f-email">Email</label>
+              <input class="field" id="f-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" data-validate="email" aria-describedby="f-email-error">
+              <p class="field-error" id="f-email-error"></p>
+            </div>
+            <div class="field-wrap">
+              <span class="field-label" id="f-type-label">Project type</span>
+              <div class="select" data-dropdown>
+                <input type="hidden" name="project_type" value="">
+                <button class="select__toggle" type="button" id="f-type" aria-haspopup="listbox" aria-expanded="false" aria-controls="f-type-menu" aria-labelledby="f-type-label f-type"><span class="select__value" data-placeholder="Kitchen, bathroom, basement…">Kitchen, bathroom, basement…</span><span class="icon icon--chevron" aria-hidden="true"></span></button>
+                <ul class="select__menu" id="f-type-menu" role="listbox" tabindex="-1" data-lenis-prevent aria-labelledby="f-type-label">
+                  <li class="select__option" id="f-type-opt-0" role="option" aria-selected="false" data-value="Kitchen remodeling">Kitchen remodeling<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-1" role="option" aria-selected="false" data-value="Bathroom remodeling">Bathroom remodeling<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-2" role="option" aria-selected="false" data-value="Basement finishing">Basement finishing<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-3" role="option" aria-selected="false" data-value="Showers and heated floors">Showers and heated floors<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-4" role="option" aria-selected="false" data-value="Decks and exteriors">Decks and exteriors<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-5" role="option" aria-selected="false" data-value="Interior and flooring">Interior and flooring<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-6" role="option" aria-selected="false" data-value="Hotel services">Hotel services<span class="icon icon--check" aria-hidden="true"></span></li>
+                  <li class="select__option" id="f-type-opt-7" role="option" aria-selected="false" data-value="Something else">Something else<span class="icon icon--check" aria-hidden="true"></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn" type="submit">Get a free estimate <span class="icon icon--arrow" aria-hidden="true"></span></button>
+            <p class="cta-note">Free written estimate, <br class="br-design">no obligation</p>
+          </div>
+        </form>
+      </div>
+    </section>

@@ -5,7 +5,7 @@
   const root = document.documentElement;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const canHover = matchMedia('(hover: hover) and (pointer: fine)');
-  const compactMq = matchMedia('(max-width: 1279px)');
+  const compactMq = matchMedia('(max-width: 1279.98px)');
   let lenis = null;
 
   /* ---------- Smooth scroll (Lenis) ----------
@@ -181,6 +181,12 @@
   const ANIMATIONS = [
     { selector: '.trust__item', effect: 'fade-up', stagger: 100, offset: 0 },
 
+    { selector: '.page-hero__body > *', effect: 'fade-up', stagger: 80, offset: 0 },
+    { selector: '.story__title, .story__text > p', effect: 'fade-up', stagger: 100 },
+    { selector: '.values .title', effect: 'fade-up' },
+    { selector: '.value-tile', effect: 'fade-up', stagger: 100 },
+    { selector: '.work__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
+
     { selector: '.intro__body > *', effect: 'fade-up', stagger: 100 },
     { selector: '.intro__media', effect: 'fade-up', duration: 1000 },
 
@@ -189,7 +195,7 @@
     { selector: '.why .title, .process .title', effect: 'fade-up' },
 
     { selector: '.svc-card', effect: 'fade-up', stagger: 100, staggerGroup: 3, media: '(min-width: 1280px)' },
-    { selector: '.svc-card', effect: 'fade-up', stagger: 120, staggerGroup: 2, media: '(max-width: 1279px)' },
+    { selector: '.svc-card', effect: 'fade-up', stagger: 120, staggerGroup: 2, media: '(max-width: 1279.98px)' },
     { selector: '.why-row', effect: 'fade-up', stagger: 80 },
     { selector: '.projects__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
 
@@ -302,18 +308,20 @@
     return swiper;
   }
 
-  /* Recent projects (node 42:189 / 46:158): track runs off the right edge */
-  function initProjectsSlider() {
-    const el = document.querySelector('[data-projects-slider]');
-    if (!el || !window.Swiper) return;
-    createSlider(el, 'projects', 'project');
+  /* Every [data-slider="name"]: Recent projects (home), Our work (About), …
+     Arrows are [data-<name>-prev|next], dots [data-dots-for="<name>"]. */
+  function initSliders() {
+    if (!window.Swiper) return;
+    document.querySelectorAll('[data-slider]').forEach((el) => {
+      createSlider(el, el.dataset.slider, el.dataset.sliderLabel || 'slide');
+    });
   }
 
   /* Google reviews: a 2 × 2 grid on desktop, a swipe track on compact screens (node 56:43) */
   function initReviewsSlider() {
     const el = document.querySelector('[data-reviews-slider]');
     if (!el || !window.Swiper) return;
-    const compact = matchMedia('(max-width: 1279px)');
+    const compact = matchMedia('(max-width: 1279.98px)');
     let swiper = null;
     const sync = () => {
       if (compact.matches && !swiper) {
@@ -335,7 +343,7 @@
     const menu = document.querySelector('[data-mobile-menu]');
     const opener = document.querySelector('[data-menu-open]');
     if (!menu || !opener) return;
-    const compact = matchMedia('(max-width: 1279px)');
+    const compact = matchMedia('(max-width: 1279.98px)');
 
     const open = () => {
       menu.inert = false;
@@ -955,7 +963,7 @@
   initHeader();
   initMegaMenus();
   initAnimations();
-  initProjectsSlider();
+  initSliders();
   initReviewsSlider();
   initMobileMenu();
   initStickyCta();

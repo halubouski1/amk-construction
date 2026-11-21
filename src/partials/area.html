@@ -1,0 +1,58 @@
+    <section class="section area" id="area" aria-labelledby="area-title">
+      <div class="container area__inner">
+        <div class="area__intro">
+          <h2 class="title area__title" id="area-title">Remodeling across <br>Chester County</h2>
+          <p class="lead">Based in West Chester, PA. <br class="br-compact">We also work in Delaware <br>County and in Wilmington, DE.</p>
+          <ul class="towns" data-towns>
+            <li><a class="town is-active" href="/projects/" data-town="west-chester">West Chester, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="exton">Exton, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="malvern">Malvern, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="downingtown">Downingtown, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="paoli">Paoli, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="east-goshen">East Goshen, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="westtown">Westtown, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="glen-mills">Glen Mills, PA <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+            <li><a class="town" href="/projects/" data-town="wilmington">Wilmington, DE <span class="icon icon--arrow" aria-hidden="true"></span></a></li>
+          </ul>
+        </div>
+
+        <!-- Live map: MapLibre GL + OpenFreeMap tiles, loaded when the section comes near (/js/map.min.js, /css/map.min.css).
+             The static Figma composition below is shown until then and stays as the fallback (no WebGL, offline). -->
+        <div class="area-map" data-area-map data-map-js="/js/map.min.js" data-map-css="/css/map.min.css" data-map-style="https://tiles.openfreemap.org/styles/positron" data-map-geojson="/assets/data/service-area.geojson" role="region" aria-label="Service area map">
+          <div class="area-map__gl" data-map-gl></div>
+          <div class="area-map__static" data-map-static>
+            <img class="area-map__counties" src="/assets/images/map-counties.svg" width="1000" height="820" alt="" loading="lazy" decoding="async">
+            <span class="map-label map-label--region" style="--x:70;--y:65">PENNSYLVANIA</span>
+            <span class="map-label map-label--region" style="--x:790;--y:614">NEW JERSEY</span>
+            <span class="map-label map-label--region" style="--x:430;--y:757">DELAWARE</span>
+            <span class="map-label map-label--region" style="--x:70;--y:731">MARYLAND</span>
+            <span class="map-label map-label--region map-label--county" style="--x:190;--y:520">CHESTER COUNTY</span>
+            <span class="map-pin map-pin--city" style="--x:880;--y:344"></span>
+            <span class="map-label map-label--city" style="--x:843;--y:316">Philadelphia</span>
+            <button class="map-pin map-pin--home is-active" type="button" style="--x:433;--y:327" data-pin="west-chester" aria-label="West Chester, PA"></button>
+            <button class="map-pin" type="button" style="--x:422;--y:242" data-pin="exton" aria-label="Exton, PA"></button>
+            <span class="map-label" style="--x:405.5;--y:213">Exton</span>
+            <button class="map-pin" type="button" style="--x:529;--y:233" data-pin="malvern" aria-label="Malvern, PA"></button>
+            <span class="map-label" style="--x:504;--y:204">Malvern</span>
+            <button class="map-pin" type="button" style="--x:340;--y:272" data-pin="downingtown" aria-label="Downingtown, PA"></button>
+            <span class="map-label" style="--x:219;--y:268">Downingtown</span>
+            <button class="map-pin" type="button" style="--x:566;--y:225" data-pin="paoli" aria-label="Paoli, PA"></button>
+            <span class="map-label" style="--x:587;--y:221">Paoli</span>
+            <button class="map-pin" type="button" style="--x:507;--y:290" data-pin="east-goshen" aria-label="East Goshen, PA"></button>
+            <span class="map-label" style="--x:528;--y:286">East Goshen</span>
+            <button class="map-pin" type="button" style="--x:487;--y:353" data-pin="westtown" aria-label="Westtown, PA"></button>
+            <span class="map-label" style="--x:508;--y:349">Westtown</span>
+            <button class="map-pin" type="button" style="--x:555;--y:389" data-pin="glen-mills" aria-label="Glen Mills, PA"></button>
+            <span class="map-label" style="--x:576;--y:385">Glen Mills</span>
+            <button class="map-pin" type="button" style="--x:503;--y:621" data-pin="wilmington" aria-label="Wilmington, DE"></button>
+            <span class="map-label" style="--x:524;--y:617">Wilmington, DE</span>
+
+            <div class="map-tip" data-map-tip aria-live="polite">
+              <p class="map-tip__title" data-tip-title>West Chester, PA</p>
+              <p class="map-tip__text" data-tip-text>Our home base</p>
+              <a class="arrow-link" href="/projects/">See local projects <span class="icon icon--arrow" aria-hidden="true"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

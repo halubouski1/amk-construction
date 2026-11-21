@@ -4,7 +4,7 @@
    (between the compact:generated markers). Edit this file, never the generated block. */
 
 /* ================= Scale factors */
-@media (max-width: 1279px) {
+@media (max-width: 1279.98px) {
   :root {
     --m: 1.25;
     --gutter-base: 40px;
@@ -14,33 +14,33 @@
   }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1023.98px) {
   :root {
     --m: 1.15;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768.98px) {
   :root {
     --m: 1.1;
     --gutter-base: 20px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480.98px) {
   :root {
     --m: 1;
   }
 }
 
-@media (max-width: 359px) {
+@media (max-width: 359.98px) {
   :root {
     --m: 0.889;
   }
 }
 
 /* ================= Compact (≤1279): shared */
-@media (max-width: 1279px) {
+@media (max-width: 1279.98px) {
   body {
     font-size: m(16);
   }
@@ -175,7 +175,8 @@
   /* ---------- Section heading: text, content, then the action button last */
   .services > .container,
   .projects > .container,
-  .hotel > .container {
+  .hotel > .container,
+  .work > .container {
     display: flex;
     flex-direction: column;
   }
@@ -194,7 +195,7 @@
 }
 
 /* ================= Compact: header, mobile menu, sticky bar */
-@media (max-width: 1279px) {
+@media (max-width: 1279.98px) {
   .header__inner {
     padding-right: calc(var(--gutter) - m(8));
   }
@@ -435,7 +436,7 @@
 }
 
 /* ================= Compact: page sections */
-@media (max-width: 1279px) {
+@media (max-width: 1279.98px) {
   /* ---------- Hero (node 46:12) */
   .hero {
     height: calc(var(--fixed-vh, 812px) - var(--header-h));
@@ -1264,8 +1265,137 @@
   }
 }
 
+/* ================= Compact: inner pages */
+@media (max-width: 1279.98px) {
+  .breadcrumbs {
+    font-size: m(15);
+  }
+
+  /* ---------- Page hero with a photo (About 89:4246): photo first */
+  .page-hero--photo {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .page-hero__media {
+    order: -1;
+    width: 100%;
+    height: m(400);
+  }
+
+  .page-hero__body {
+    justify-content: flex-start;
+    gap: m(20);
+    padding: m(28) var(--gutter) m(32);
+  }
+
+  .page-hero__title {
+    font-size: m(38);
+    line-height: 1.02;
+    letter-spacing: m(-0.95);
+  }
+
+  .page-hero__lead {
+    font-size: m(17);
+    line-height: 1.55;
+    color: var(--c-ink-72);
+  }
+
+  .page-hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: m(12);
+  }
+
+  /* ---------- About: story, values, our work */
+  .story {
+    padding: m(88) 0 m(64);
+  }
+
+  .story__inner {
+    flex-direction: column;
+    gap: m(32);
+  }
+
+  .story__title {
+    width: auto;
+    letter-spacing: m(-0.85);
+  }
+
+  .story__text {
+    gap: m(20);
+    padding-top: 0;
+    font-size: m(17);
+  }
+
+  .values__tiles {
+    grid-template-columns: 1fr;
+    gap: m(16);
+    margin-top: m(32);
+  }
+
+  .value-tile {
+    gap: m(12);
+    padding: m(24);
+  }
+
+  .value-tile__num {
+    font-size: m(32);
+    letter-spacing: m(-0.64);
+  }
+
+  .value-tile__title {
+    font-size: m(21);
+  }
+
+  .value-tile__text {
+    font-size: m(16);
+  }
+
+  .work__slider {
+    --slider-gap: m(12);
+    order: 2;
+    width: 100%;
+    margin: m(32) 0 0;
+    overflow: visible;
+  }
+
+  .work-slide {
+    width: m(260);
+    height: m(338);
+  }
+
+  .work .slider-controls {
+    order: 3;
+    margin-top: m(32);
+  }
+
+  .work .section-head__aside {
+    margin-top: m(32);
+  }
+
+  .work .section-head__aside .btn {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279.98px) {
+  .values__tiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .page-hero__cta {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .page-hero__media {
+    height: m(460);
+  }
+}
+
 /* ================= Compact: popups as a bottom sheet (nodes 57:60, 57:93) */
-@media (max-width: 1279px) {
+@media (max-width: 1279.98px) {
   .modal {
     padding: 0;
   }
@@ -1404,7 +1534,7 @@
 }
 
 /* ================= Tablets 769–1279: wider grids, buttons sized to their label */
-@media (min-width: 769px) and (max-width: 1279px) {
+@media (min-width: 769px) and (max-width: 1279.98px) {
   .btn {
     width: auto;
     min-width: m(260);

@@ -7,6 +7,13 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Section map (Figma y → section, height): 0 Header 92 · 92 Hero 988 · 1080 Trust bar 192 · 1272 Intro 1070 · 2342 Services 1476 · 3818 Why AMK 944 · 4762 Projects 1136 · 5898 Google reviews 741 · 6639 Process 547 · 7186 Service area 970 · 8156 Hotel services 1166 · 9322 FAQ 817 · 10139 Estimate form 900 · 11039 Footer 553. Every section has 150px top padding and none at the bottom.
 - Originals: `../amk-construction-originals/figma` (raw MCP downloads, full-page screenshot), `../amk-construction-originals/images` (PNG sources for `npm run build:images`).
 
+## Pages and HTML build
+- Inner pages: Figma file `64lCi0IccWnnnnAhlJngja` (copy of the home file + inner pages, group `2001:64`): Services `89:2`/`89:425`, Service (Kitchen) `89:825`/`89:1265`, Hotel services `89:1673`/`89:1931`, Projects `89:2166`/`89:2393`, Project (Marble bath) `89:2607`/`89:2843`, Reviews `89:3049`/`89:3431`, About `89:3790`/`89:4236`, Blog `89:4640`/`89:4861`, Blog article `89:5066`/`89:5259`, Contact `89:5420`/`89:5693`. Extra photos: frame `80:2`.
+- Sources live in `src/` (never edit the generated `*.html` / `<dir>/index.html`): `src/index.html`, `src/about/index.html`, … and shared partials in `src/partials/` (`head`, `header`, `footer`, `overlays` = mobile menu + sticky bar + popup, `trust`, `area`, `reviews`, `estimate`). `npm run build:html` (`tools/build-html.py`, part of `npm run build`) expands `{{include NAME}}`, `{{include header|KEY}}` (marks the nav item `data-nav="KEY"` with `aria-current="page"`) and `{{pic NAME|CLASS|SIZES|W|H|ALT|MODE}}`.
+- Clean URLs as folders (`/about/`, `/services/kitchen-remodeling/`, …), `trailingSlash: true` on Vercel. All asset paths are root-absolute (`/assets/…`).
+- Breakpoint upper bounds end in `.98px` (1279.98, 1023.98, 768.98, 480.98, 359.98, 1919.98): with browser zoom the viewport width can be fractional (1279.33) and fall between `max-width: 1279px` and `min-width: 1280px`.
+- Local server: port 8766 (`python3 -m http.server 8766`); 8765 may be taken by another project.
+
 ## Typography
 - Onest (SIL OFL), one variable WOFF2 (latin, 300–500) reused from Stonix: `assets/fonts/onest-latin.woff2`, preloaded. Page text 400/500; popup titles 300.
 - "normal" line-heights written explicitly: 15 → 1.27, 16 → 1.25, 17 → 1.29, 18 → 1.28, 20 → 1.3, 22 → 1.27, 28 → 1.29.
@@ -47,6 +54,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 
 | Page | Desktop 1920 | Laptop ×0.75 | Tablet | Mobile 360 |
 |---|---|---|---|---|
+| about (89:3790 / 89:4236) | done | generated | from mobile × --m | done |
 | index + popups + dropdowns + mobile menu | done (42:2, 42:624, 42:661, 2004:52, 2004:154) | generated; 1440 OK, 1280 overflows by 70px (fixed laptop widths) — next step | from the mobile frame × --m, no overflow 769–1279 | done (46:2, 57:2, 57:60, 57:93, 47:374), no overflow 320–768 |
 
 ## Deviations from Figma
