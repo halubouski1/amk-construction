@@ -2209,6 +2209,81 @@
   }
 }
 
+/* ================= Compact: Contact (node 89:5693) */
+@media (max-width: 1279.98px) {
+  .contact {
+    padding-top: m(32);
+  }
+
+  .contact__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: m(32);
+  }
+
+  .contact-details {
+    width: auto;
+  }
+
+  .contact-details__item {
+    gap: m(8);
+    padding: m(18) 0;
+  }
+
+  .contact-details dt {
+    font-size: m(15);
+    line-height: 1.27;
+  }
+
+  .contact-details dd {
+    font-size: m(19);
+    line-height: 1.26;
+    letter-spacing: m(-0.19);
+  }
+
+  .contact-details__item--phone dd {
+    font-size: m(30);
+    line-height: 1.27;
+    letter-spacing: m(-0.6);
+  }
+
+  .contact-details__item--socials {
+    gap: m(14);
+    padding: m(24) 0 0;
+  }
+
+  .social-btn {
+    width: m(48);
+    height: m(48);
+  }
+
+  .social-btn .icon {
+    --icon-size: m(20);
+  }
+
+  /* the form panel runs to the screen edges */
+  .contact-form {
+    gap: m(20);
+    margin: 0 calc(-1 * var(--gutter));
+    padding: m(32) var(--gutter);
+  }
+
+  .contact-form__title {
+    font-size: m(26);
+    line-height: 1.15;
+    letter-spacing: m(-0.52);
+  }
+
+  .contact-form textarea.field {
+    height: m(124);
+  }
+
+  .contact-form .form-actions {
+    align-items: stretch;
+    margin-top: m(20);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -2255,6 +2330,21 @@
   /* Blog article: the inline CTA button sized to its label */
   .inline-cta .btn {
     align-self: flex-start;
+  }
+
+  /* Contact: details in two columns, the form button sized to its label */
+  .contact-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: m(32);
+  }
+
+  .contact-details__item:nth-child(2) {
+    border-top: 0;
+  }
+
+  .contact-form .form-actions {
+    align-items: flex-start;
   }
 
   /* Projects: two columns */

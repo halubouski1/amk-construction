@@ -495,6 +495,20 @@
     margin-top: 18px;
   }
 
+  .social-btns {
+    gap: 9px;
+  }
+
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(22, 23, 26, 0.2);
+  }
+
+  .social-btn .icon {
+    --icon-size: 15px;
+  }
+
   /* index.html */
   .visually-hidden {
     width: 1px;
@@ -1554,6 +1568,70 @@
 
   .more-guides .prj-card__media {
     height: 272.25px;
+  }
+
+  .contact {
+    padding-top: 54px;
+  }
+
+  .contact__inner {
+    gap: 60px;
+  }
+
+  .contact-details {
+    width: 450px;
+  }
+
+  .contact-details__item {
+    gap: 6px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(22, 23, 26, 0.14);
+  }
+
+  .contact-details dt {
+    font-size: 12px;
+  }
+
+  .contact-details dd {
+    font-size: 16.5px;
+    letter-spacing: -0.165px;
+  }
+
+  .contact-details__item--phone dd {
+    font-size: 30px;
+    letter-spacing: -0.6px;
+  }
+
+  .contact-details__item--socials {
+    gap: 10.5px;
+  }
+
+  .contact-form {
+    gap: 15px;
+    padding: 42px;
+  }
+
+  .contact-form__title {
+    font-size: 30px;
+    letter-spacing: -0.6px;
+  }
+
+  .contact-form .field-wrap {
+    gap: 6px;
+  }
+
+  .contact-form textarea.field {
+    height: 96px;
+    padding-top: 13.5px;
+  }
+
+  .contact-form .form-actions {
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .contact-form .cta-note {
+    font-size: 11.25px;
   }
 
   .story {
@@ -3833,6 +3911,81 @@
   }
 }
 
+/* ================= Compact: Contact (node 89:5693) */
+@media (max-width: 1279.98px) {
+  .contact {
+    padding-top: calc(32px * var(--m));
+  }
+
+  .contact__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: calc(32px * var(--m));
+  }
+
+  .contact-details {
+    width: auto;
+  }
+
+  .contact-details__item {
+    gap: calc(8px * var(--m));
+    padding: calc(18px * var(--m)) 0;
+  }
+
+  .contact-details dt {
+    font-size: calc(15px * var(--m));
+    line-height: 1.27;
+  }
+
+  .contact-details dd {
+    font-size: calc(19px * var(--m));
+    line-height: 1.26;
+    letter-spacing: calc(-0.19px * var(--m));
+  }
+
+  .contact-details__item--phone dd {
+    font-size: calc(30px * var(--m));
+    line-height: 1.27;
+    letter-spacing: calc(-0.6px * var(--m));
+  }
+
+  .contact-details__item--socials {
+    gap: calc(14px * var(--m));
+    padding: calc(24px * var(--m)) 0 0;
+  }
+
+  .social-btn {
+    width: calc(48px * var(--m));
+    height: calc(48px * var(--m));
+  }
+
+  .social-btn .icon {
+    --icon-size: calc(20px * var(--m));
+  }
+
+  /* the form panel runs to the screen edges */
+  .contact-form {
+    gap: calc(20px * var(--m));
+    margin: 0 calc(-1 * var(--gutter));
+    padding: calc(32px * var(--m)) var(--gutter);
+  }
+
+  .contact-form__title {
+    font-size: calc(26px * var(--m));
+    line-height: 1.15;
+    letter-spacing: calc(-0.52px * var(--m));
+  }
+
+  .contact-form textarea.field {
+    height: calc(124px * var(--m));
+  }
+
+  .contact-form .form-actions {
+    align-items: stretch;
+    margin-top: calc(20px * var(--m));
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -3879,6 +4032,21 @@
   /* Blog article: the inline CTA button sized to its label */
   .inline-cta .btn {
     align-self: flex-start;
+  }
+
+  /* Contact: details in two columns, the form button sized to its label */
+  .contact-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: calc(32px * var(--m));
+  }
+
+  .contact-details__item:nth-child(2) {
+    border-top: 0;
+  }
+
+  .contact-form .form-actions {
+    align-items: flex-start;
   }
 
   /* Projects: two columns */

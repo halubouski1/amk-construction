@@ -190,6 +190,8 @@
     { selector: '.posts .title, .pagination', effect: 'fade-up' },
     { selector: '.article-hero__body > *', effect: 'fade-up', stagger: 80, offset: 0 },
     { selector: '.toc, .inline-cta', effect: 'fade-up' },
+    { selector: '.contact-details__item', effect: 'fade-up', stagger: 60 },
+    { selector: '.contact-form', effect: 'fade-up', delay: 100 },
     { selector: '.review-card--wall', effect: 'fade-up', stagger: 80, staggerGroup: 3, media: '(min-width: 1280px)' },
     { selector: '.review-card--wall', effect: 'fade-up', media: '(max-width: 1279.98px)' },
     { selector: '.story__title, .story__text > p', effect: 'fade-up', stagger: 100 },
@@ -404,22 +406,32 @@
   function initStickyCta() {
     const bar = document.querySelector('[data-sticky-cta]');
     // home hero or any inner page hero
-    const hero = document.querySelector('.hero, .page-hero');
+    const hero = document.querySelector('.hero, .page-hero, .case-hero, .article-hero');
     if (!bar || !hero) return;
     const form = document.querySelector('#estimate');
+    const footer = document.querySelector('.footer');
     let heroVisible = true;
     let formReached = false;
-    const sync = () => bar.classList.toggle('is-visible', !heroVisible && !formReached);
+    let footerVisible = false;
+    const sync = () => bar.classList.toggle('is-visible', !heroVisible && !formReached && !footerVisible);
     new IntersectionObserver(([entry]) => {
       heroVisible = entry.isIntersecting;
       sync();
     }).observe(hero);
     if (form) {
-      // on screen, or already scrolled past it into the footer
+      // the closing estimate form hides the bar from there on; a form higher up (Contact)
+      // only while it is on screen
+      const isClosing = form.classList.contains('estimate');
       new IntersectionObserver(([entry]) => {
-        formReached = entry.isIntersecting || entry.boundingClientRect.top < 0;
+        formReached = entry.isIntersecting || (isClosing && entry.boundingClientRect.top < 0);
         sync();
       }).observe(form);
+    }
+    if (footer) {
+      new IntersectionObserver(([entry]) => {
+        footerVisible = entry.isIntersecting;
+        sync();
+      }).observe(footer);
     }
   }
 

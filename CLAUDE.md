@@ -62,6 +62,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 | reviews (89:3049 / 89:3431) | done | generated | 2 columns, rating row wraps | done |
 | blog (89:4640 / 89:4861) | done | generated | 2 columns, taller featured photo | done |
 | blog/how-long-does-a-kitchen-remodel-take (89:5066 / 89:5259) | done | generated | single column, no contents box | done |
+| contact (89:5420 / 89:5693) | done | generated | details in 2 columns, form below | done |
 | index + popups + dropdowns + mobile menu | done (42:2, 42:624, 42:661, 2004:52, 2004:154) | generated; 1440 OK, 1280 overflows by 70px (fixed laptop widths) — next step | from the mobile frame × --m, no overflow 769–1279 | done (46:2, 57:2, 57:60, 57:93, 47:374), no overflow 320–768 |
 
 ## Deviations from Figma
@@ -77,18 +78,20 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Descriptions wrap with Figma's line breaks (`<br class="br-design">`) instead of fixed box widths.
 - Service-area live map: real geography, so pins sit where the towns really are, not at the Figma positions; the static layer keeps the Figma positions.
 
-- Sticky call/estimate bar (mobile, tablet) shows on every page once the home `.hero` or inner `.page-hero` is scrolled past.
+- Sticky call/estimate bar (mobile, tablet) shows on every page once the hero (`.hero`, `.page-hero`, `.case-hero`, `.article-hero`) is scrolled past; it hides while `#estimate` is on screen, after the closing `.estimate` form and over the footer (Contact has its form near the top, so the bar comes back below it).
 - Projects: category chips filter the grid and "Show more" reveals the rest (`initProjects`, `[data-projects]`, `data-limit="9"`); 6 extra cards (Figma shows 9) so "Show more" and the Hotels chip have something to show. Cards without a project page are `div.prj-card--static` (no hover); only Marble bath links to `/projects/marble-bath/`. On phones "White shaker kitchen with quartz" fits on one line (Figma wraps it; Onest renders ~2% narrower here), so the grid is 23px shorter.
 - Project case page (`/projects/marble-bath/`): `.case-hero` with a `<dl class="case-facts">`, full-bleed `.case-photo` (no scroll animation: it is the LCP image; the 1536px original is upscaled at 1920), scope tiles reuse `.value-tile` (`--scope`), gallery reuses `.gallery`, "Similar projects" reuses `.related__slider` with `.prj-card--lg` cards (5 cards, Figma shows 3, so the arrows scroll). The large project card styles live on `.prj-card--lg` (Projects grid + Similar).
 - Reviews page: `.rating-row` (Google logo, 5.0, stars, count + buttons), topic chips are static `li.chip--static` (the counts describe all 23 Google reviews, only 8 are on the page, so they do not filter), `.reviews-wall__grid` is a 3-column grid with rows stretched to equal height (Figma rows are 319/318/319, 290/290/291, 261/261); cards reuse `.review-card` with `--wall` (light on phones too, unlike the home block).
 - Blog: the featured post and the guide cards share one `[data-projects]` wrapper (`initProjects` also runs the blog: `data-cat` can hold several categories, `data-featured` items do not count for the empty state, `[data-projects-empty]` message, `[data-projects-all]` pagination only under "All", `data-noun` for the live status). Guide cards reuse `.prj-grid` + `.prj-card--lg` (`.post-grid` sets the 363px photo).
 - Blog article: `.article-hero` (title + author), `.article-photo` (reuses `.case-photo`), `.article__inner` with a sticky contents box (`[data-toc]`, `initToc` marks the section being read with `aria-current`, desktop only) and `.prose` (long-form text: blocks 28px apart, browser margins off; the table becomes 2 columns on phones with "Who" under "What happens", as in the mobile frame). The inline CTA runs edge to edge on phones. "More guides" reuses the Similar slider (6 guide cards).
-- Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead); two article table cells fit one line at 1920 (the table is 52px shorter).
+- Contact: `.contact-details` (`<dl>`, big red phone, socials as round `.social-btn`) + `.contact-form#estimate` (the estimate form fields with `c-*` ids plus "About the project"); the service-area block is the home `{{include area}}` with the live map; the FAQ is the last section, so `main > .section:last-child` keeps its bottom space before the footer.
+- Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead); two article table cells fit one line at 1920 (the table is 52px shorter); the Contact form title fits one line on phones (30px shorter).
 - Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
 
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).
 
 ## Content flagged to the client
+- Contact FAQ: answers 2 (from the home FAQ) and 3 (from the service-area text) are ours; Figma has only the first answer.
 - Blog: only the featured guide has a page (`/blog/how-long-does-a-kitchen-remodel-take/`); the 6 guide cards are static, pagination pages 2 and 3 are inert (`aria-disabled`) until there are more posts. Category tags per guide (incl. "Costs") are our choice. Photo b035 from Figma.
 - Reviews page: "Read all reviews on Google" and "Leave a review" point to the `#google` placeholder until the Google Business profile link is known.
 - Marble bath page: gallery photos b049, b051, b015, b047, b008 come from Figma (originals have EXIF; published files carry no metadata). Similar-project cards have no pages yet (static, no hover).
