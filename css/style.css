@@ -2760,6 +2760,129 @@ a.footer__link:focus-visible {
   gap: 16px;
 }
 
+/* the estimate form right after the dark band starts without a gap (Projects 89:2304) */
+.cta-band + .estimate {
+  padding-top: 0;
+}
+
+/* ================= Projects (node 89:2166) */
+/* ---------- Text-only page hero with filters */
+.page-hero--plain .page-hero__body {
+  align-items: flex-start;
+  padding: 72px var(--gutter) 0;
+}
+
+.page-hero--plain .page-hero__title {
+  line-height: 1;
+}
+
+.page-hero--plain .page-hero__lead {
+  max-width: 720px;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+}
+
+.chip {
+  flex: none;
+  height: 48px;
+  padding: 0 21px;
+  border: 1px solid rgba(22, 23, 26, 0.2);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--c-ink);
+  white-space: nowrap;
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--c-ink);
+}
+
+.chip[aria-pressed="true"] {
+  border-color: var(--c-red);
+  background: var(--c-red);
+  color: var(--c-paper);
+}
+
+/* ---------- Project grid: 3 columns, "Show more" below */
+.prj-list {
+  padding-top: 64px;
+}
+
+.prj-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px 16px;
+}
+
+.prj-grid .prj-card {
+  gap: 20px;
+  width: auto;
+}
+
+.prj-grid .prj-card[hidden] {
+  display: none;
+}
+
+.prj-grid .prj-card__media {
+  height: 659px;
+}
+
+.prj-grid .prj-card__cat {
+  line-height: 1.25;
+  color: rgba(22, 23, 26, 0.58);
+}
+
+.prj-card__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.prj-grid .prj-card__title {
+  margin-top: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.42px;
+}
+
+.prj-grid .prj-card .icon {
+  flex: none;
+}
+
+/* cards without a project page yet: no hover */
+.prj-card--static .prj-card__media img,
+.prj-card--static:hover .prj-card__media img {
+  scale: none;
+}
+
+.prj-card--static:hover .prj-card__media::after {
+  opacity: 0;
+}
+
+.prj-card--static:hover .prj-card__title {
+  color: inherit;
+}
+
+.prj-card--static:hover .icon {
+  rotate: none;
+}
+
+.prj-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.prj-more:has(> [hidden]) {
+  display: none;
+}
+
 /* ================= About (node 89:3790) */
 
 /* Figma: 150 above; the text column ends 116 above the trust bar */

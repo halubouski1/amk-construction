@@ -1168,6 +1168,55 @@
     gap: 12px;
   }
 
+  .page-hero--plain .page-hero__body {
+    padding: 54px var(--gutter) 0;
+  }
+
+  .page-hero--plain .page-hero__lead {
+    max-width: 540px;
+  }
+
+  .chips {
+    gap: 7.5px;
+  }
+
+  .chip {
+    height: 36px;
+    padding: 0 15.75px;
+    border: 1px solid rgba(22, 23, 26, 0.2);
+    border-radius: 749.25px;
+    font-size: 12px;
+  }
+
+  .prj-list {
+    padding-top: 48px;
+  }
+
+  .prj-grid {
+    gap: 42px 12px;
+  }
+
+  .prj-grid .prj-card {
+    gap: 15px;
+  }
+
+  .prj-grid .prj-card__media {
+    height: 494.25px;
+  }
+
+  .prj-card__row {
+    gap: 12px;
+  }
+
+  .prj-grid .prj-card__title {
+    font-size: 21px;
+    letter-spacing: -0.315px;
+  }
+
+  .prj-more {
+    margin-top: 48px;
+  }
+
   .story {
     padding: 112.5px 0 87px;
   }
@@ -2975,8 +3024,108 @@
   }
 }
 
+/* ================= Compact: Projects (node 89:2393) */
+@media (max-width: 1279.98px) {
+  .page-hero--plain .page-hero__body {
+    padding: calc(28px * var(--m)) var(--gutter) 0;
+  }
+
+  .page-hero--plain .page-hero__title {
+    line-height: 1;
+    letter-spacing: calc(-1.14px * var(--m));
+  }
+
+  .page-hero--plain .page-hero__lead {
+    max-width: none;
+  }
+
+  /* chips scroll sideways and run to the screen edge */
+  .chips {
+    align-self: stretch;
+    margin-right: calc(-1 * var(--gutter));
+    padding-right: var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    height: calc(48px * var(--m));
+    padding: 0 calc(21px * var(--m));
+    font-size: calc(16px * var(--m));
+  }
+
+  .prj-list {
+    padding-top: calc(32px * var(--m));
+  }
+
+  .prj-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: calc(32px * var(--m));
+  }
+
+  .prj-grid .prj-card {
+    gap: calc(14px * var(--m));
+  }
+
+  .prj-grid .prj-card__media {
+    height: calc(402px * var(--m));
+  }
+
+  .prj-grid .prj-card__cat {
+    font-size: calc(15px * var(--m));
+    line-height: 1.27;
+  }
+
+  .prj-grid .prj-card__title {
+    max-width: none;
+    font-size: calc(21px * var(--m));
+    line-height: 1.2;
+    letter-spacing: calc(-0.315px * var(--m));
+  }
+
+  .prj-grid .prj-card .icon {
+    display: inline-block;
+    --icon-size: calc(18px * var(--m));
+  }
+
+  /* no gap before the arrow, as in Figma (title 317 + icon 18) */
+  .prj-card__row {
+    gap: 0;
+  }
+
+  /* "Show more" is the outline button here */
+  .prj-more {
+    margin-top: calc(32px * var(--m));
+  }
+
+  .prj-more .btn {
+    --btn-bg: transparent;
+    --btn-fg: var(--c-ink);
+    --btn-border: var(--c-ink-25);
+    --btn-hover-bg: var(--c-ink);
+  }
+}
+
+/* large phones and small tablets: projects in two columns */
+@media (min-width: 600px) and (max-width: 768.98px) {
+  .prj-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: calc(16px * var(--m));
+  }
+}
+
 /* ================= Tablets 769–1279: wider grids, buttons sized to their label */
 @media (min-width: 769px) and (max-width: 1279.98px) {
+  /* Projects: two columns */
+  .prj-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: calc(16px * var(--m));
+  }
   .btn {
     width: auto;
     min-width: calc(260px * var(--m));

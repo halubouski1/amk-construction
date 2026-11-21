@@ -190,6 +190,9 @@
     { selector: '.gallery__item', effect: 'fade-up', stagger: 80 },
     { selector: '.related__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
     { selector: '.cta-band__text > *, .cta-band__actions', effect: 'fade-up', stagger: 100 },
+    { selector: '.prj-grid > .prj-card:not([hidden])', effect: 'fade-up', stagger: 100, staggerGroup: 3, media: '(min-width: 1280px)' },
+    { selector: '.prj-grid > .prj-card:not([hidden])', effect: 'fade-up', media: '(max-width: 1279.98px)' },
+    { selector: '.prj-more', effect: 'fade-up' },
 
     { selector: '.intro__body > *', effect: 'fade-up', stagger: 100 },
     { selector: '.intro__media', effect: 'fade-up', duration: 1000 },
@@ -467,6 +470,67 @@
         });
       });
     });
+  }
+
+  /* ---------- Projects: category chips + "Show more" ([data-projects]) ----------
+     Cards carry data-cat; chips [data-filter] (aria-pressed) pick a category. The first
+     data-limit matching cards show, "Show more" reveals the rest. Cards that appear fade in;
+     after the first change the grid drops its AOS attributes so the two never fight. */
+  function initProjects() {
+    const list = document.querySelector('[data-projects]');
+    if (!list) return;
+    const cards = [...list.querySelectorAll('.prj-card')];
+    const chips = [...document.querySelectorAll('[data-filter]')];
+    const more = list.querySelector('[data-projects-more]');
+    const status = list.querySelector('[data-projects-status]');
+    const limit = Number(list.dataset.limit) || 9;
+    let filter = 'all';
+    let expanded = false;
+    let aosDropped = false;
+
+    const render = (animate) => {
+      const matches = cards.filter((card) => filter === 'all' || card.dataset.cat === filter);
+      const shown = new Set(expanded ? matches : matches.slice(0, limit));
+      const appeared = [];
+      cards.forEach((card) => {
+        const show = shown.has(card);
+        if (show && card.hidden) appeared.push(card);
+        card.hidden = !show;
+      });
+      more.hidden = expanded || matches.length <= limit;
+      if (!animate) return;
+      if (!aosDropped) {
+        aosDropped = true;
+        cards.forEach((card) => card.removeAttribute('data-aos'));
+      }
+      status.textContent = `Showing ${shown.size} ${shown.size === 1 ? 'project' : 'projects'}`;
+      if (!reducedMotion.matches) {
+        appeared.forEach((card, i) => card.animate(
+          [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }],
+          { duration: 600, delay: Math.min(i, 5) * 70, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'backwards' },
+        ));
+      }
+      window.AOS?.refresh();
+    };
+
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      if (chip.dataset.filter === filter) return;
+      filter = chip.dataset.filter;
+      expanded = false;
+      chips.forEach((other) => other.setAttribute('aria-pressed', String(other === chip)));
+      render(true);
+    }));
+    more.addEventListener('click', () => {
+      expanded = true;
+      const firstNew = cards.find((card) => card.hidden && (filter === 'all' || card.dataset.cat === filter));
+      render(true);
+      // keep focus in the grid: the button disappears
+      if (firstNew) {
+        if (!firstNew.matches('a')) firstNew.setAttribute('tabindex', '-1');
+        firstNew.focus({ preventScroll: true });
+      }
+    });
+    render(false);
   }
 
   /* ---------- Custom dropdown ([data-dropdown], Project type) ----------
@@ -967,6 +1031,7 @@
   initAnchorLinks();
   initHeader();
   initMegaMenus();
+  initProjects(); // before AOS: hidden cards must not get scroll triggers
   initAnimations();
   initSliders();
   initReviewsSlider();

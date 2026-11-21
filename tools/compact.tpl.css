@@ -1739,8 +1739,108 @@
   }
 }
 
+/* ================= Compact: Projects (node 89:2393) */
+@media (max-width: 1279.98px) {
+  .page-hero--plain .page-hero__body {
+    padding: m(28) var(--gutter) 0;
+  }
+
+  .page-hero--plain .page-hero__title {
+    line-height: 1;
+    letter-spacing: m(-1.14);
+  }
+
+  .page-hero--plain .page-hero__lead {
+    max-width: none;
+  }
+
+  /* chips scroll sideways and run to the screen edge */
+  .chips {
+    align-self: stretch;
+    margin-right: calc(-1 * var(--gutter));
+    padding-right: var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    height: m(48);
+    padding: 0 m(21);
+    font-size: m(16);
+  }
+
+  .prj-list {
+    padding-top: m(32);
+  }
+
+  .prj-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: m(32);
+  }
+
+  .prj-grid .prj-card {
+    gap: m(14);
+  }
+
+  .prj-grid .prj-card__media {
+    height: m(402);
+  }
+
+  .prj-grid .prj-card__cat {
+    font-size: m(15);
+    line-height: 1.27;
+  }
+
+  .prj-grid .prj-card__title {
+    max-width: none;
+    font-size: m(21);
+    line-height: 1.2;
+    letter-spacing: m(-0.315);
+  }
+
+  .prj-grid .prj-card .icon {
+    display: inline-block;
+    --icon-size: m(18);
+  }
+
+  /* no gap before the arrow, as in Figma (title 317 + icon 18) */
+  .prj-card__row {
+    gap: 0;
+  }
+
+  /* "Show more" is the outline button here */
+  .prj-more {
+    margin-top: m(32);
+  }
+
+  .prj-more .btn {
+    --btn-bg: transparent;
+    --btn-fg: var(--c-ink);
+    --btn-border: var(--c-ink-25);
+    --btn-hover-bg: var(--c-ink);
+  }
+}
+
+/* large phones and small tablets: projects in two columns */
+@media (min-width: 600px) and (max-width: 768.98px) {
+  .prj-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: m(16);
+  }
+}
+
 /* ================= Tablets 769–1279: wider grids, buttons sized to their label */
 @media (min-width: 769px) and (max-width: 1279.98px) {
+  /* Projects: two columns */
+  .prj-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: m(16);
+  }
   .btn {
     width: auto;
     min-width: m(260);
