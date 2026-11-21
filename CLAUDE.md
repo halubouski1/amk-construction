@@ -56,6 +56,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 |---|---|---|---|---|
 | about (89:3790 / 89:4236) | done | generated | from mobile × --m | done |
 | services/kitchen-remodeling (89:825 / 89:1265) | done | generated | from mobile × --m | done |
+| hotel-services (89:1673 / 89:1931) | done | generated | from mobile × --m | done |
 | index + popups + dropdowns + mobile menu | done (42:2, 42:624, 42:661, 2004:52, 2004:154) | generated; 1440 OK, 1280 overflows by 70px (fixed laptop widths) — next step | from the mobile frame × --m, no overflow 769–1279 | done (46:2, 57:2, 57:60, 57:93, 47:374), no overflow 320–768 |
 
 ## Deviations from Figma
@@ -71,9 +72,13 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Descriptions wrap with Figma's line breaks (`<br class="br-design">`) instead of fixed box widths.
 - Service-area live map: real geography, so pins sit where the towns really are, not at the Figma positions; the static layer keeps the Figma positions.
 
+- Sticky call/estimate bar (mobile, tablet) shows on every page once the home `.hero` or inner `.page-hero` is scrolled past.
+- Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
+
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).
 
 ## Content flagged to the client
+- Hotel page: FAQ answers 2–4 are draft copy written by us (Figma has the questions and only the first answer). The 3 service cards are not links yet (no hotel sub-pages in Figma).
 - Kitchen page: FAQ answers 2–4 are draft copy written by us (Figma has the questions and only the first answer); the mobile hero uses the same photo as desktop (the mobile frame shows a different kitchen).
 - FAQ answers 2–6 are draft copy written by us (Figma has only the first answer). No prices or durations were invented; please confirm.
 - Map tooltip notes per town ("Chester County", "Delaware County", …) and the town list link to `#projects` until town pages exist.

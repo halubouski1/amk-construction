@@ -189,6 +189,7 @@
     { selector: '.section-lead', effect: 'fade-up', delay: 100 },
     { selector: '.gallery__item', effect: 'fade-up', stagger: 80 },
     { selector: '.related__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
+    { selector: '.cta-band__text > *, .cta-band__actions', effect: 'fade-up', stagger: 100 },
 
     { selector: '.intro__body > *', effect: 'fade-up', stagger: 100 },
     { selector: '.intro__media', effect: 'fade-up', duration: 1000 },
@@ -389,7 +390,8 @@
      from the estimate form down (form and footer stay uncovered). */
   function initStickyCta() {
     const bar = document.querySelector('[data-sticky-cta]');
-    const hero = document.querySelector('.hero');
+    // home hero or any inner page hero
+    const hero = document.querySelector('.hero, .page-hero');
     if (!bar || !hero) return;
     const form = document.querySelector('#estimate');
     let heroVisible = true;
