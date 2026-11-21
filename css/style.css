@@ -2510,10 +2510,12 @@ a.footer__link:focus-visible {
 }
 
 /* ---------- Page hero with a photo on the right (About 89:3821) */
+/* one screen tall, like the home hero (Figma 978 at a 1080 screen) */
 .page-hero--photo {
   display: flex;
   align-items: stretch;
-  height: 978px;
+  height: calc(var(--fixed-vh, 1080px) - var(--header-h));
+  min-height: 760px;
 }
 
 /* left padding follows the container line on any screen width */

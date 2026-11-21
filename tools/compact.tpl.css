@@ -1275,6 +1275,7 @@
   .page-hero--photo {
     flex-direction: column;
     height: auto;
+    min-height: 0;
   }
 
   .page-hero__media {

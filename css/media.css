@@ -1044,7 +1044,8 @@
   }
 
   .page-hero--photo {
-    height: 733.5px;
+    height: calc(var(--fixed-vh, 810px) - var(--header-h));
+    min-height: 570px;
   }
 
   .page-hero__body {
@@ -2416,6 +2417,7 @@
   .page-hero--photo {
     flex-direction: column;
     height: auto;
+    min-height: 0;
   }
 
   .page-hero__media {
