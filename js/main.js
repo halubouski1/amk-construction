@@ -186,6 +186,8 @@
     { selector: '.case-story__col', effect: 'fade-up', stagger: 100 },
     { selector: '.case-gallery .title', effect: 'fade-up' },
     { selector: '.topics__title, .topics__list', effect: 'fade-up', stagger: 100 },
+    { selector: '.post-featured', effect: 'fade-up', offset: 0 },
+    { selector: '.posts .title, .pagination', effect: 'fade-up' },
     { selector: '.review-card--wall', effect: 'fade-up', stagger: 80, staggerGroup: 3, media: '(min-width: 1280px)' },
     { selector: '.review-card--wall', effect: 'fade-up', media: '(max-width: 1279.98px)' },
     { selector: '.story__title, .story__text > p', effect: 'fade-up', stagger: 100 },
@@ -478,24 +480,30 @@
     });
   }
 
-  /* ---------- Projects: category chips + "Show more" ([data-projects]) ----------
-     Cards carry data-cat; chips [data-filter] (aria-pressed) pick a category. The first
-     data-limit matching cards show, "Show more" reveals the rest. Cards that appear fade in;
-     after the first change the grid drops its AOS attributes so the two never fight. */
+  /* ---------- Category chips + "Show more" ([data-projects]: Projects grid, Blog) ----------
+     Items carry data-cat (one or more categories, space-separated); chips [data-filter]
+     (aria-pressed) pick one. The first data-limit matches show, [data-projects-more] reveals
+     the rest. [data-projects-empty] shows when the grid has no match, [data-projects-all]
+     (pagination) only under "All". Items that appear fade in; after the first change the
+     items drop their AOS attributes so the two never fight. */
   function initProjects() {
     const list = document.querySelector('[data-projects]');
     if (!list) return;
-    const cards = [...list.querySelectorAll('.prj-card')];
+    const cards = [...list.querySelectorAll('[data-cat]')];
     const chips = [...document.querySelectorAll('[data-filter]')];
     const more = list.querySelector('[data-projects-more]');
     const status = list.querySelector('[data-projects-status]');
+    const empty = list.querySelector('[data-projects-empty]');
+    const allOnly = [...list.querySelectorAll('[data-projects-all]')];
+    const noun = list.dataset.noun || 'project';
     const limit = Number(list.dataset.limit) || 9;
     let filter = 'all';
     let expanded = false;
     let aosDropped = false;
+    const matchesFilter = (card) => filter === 'all' || card.dataset.cat.split(' ').includes(filter);
 
     const render = (animate) => {
-      const matches = cards.filter((card) => filter === 'all' || card.dataset.cat === filter);
+      const matches = cards.filter(matchesFilter);
       const shown = new Set(expanded ? matches : matches.slice(0, limit));
       const appeared = [];
       cards.forEach((card) => {
@@ -503,13 +511,15 @@
         if (show && card.hidden) appeared.push(card);
         card.hidden = !show;
       });
-      more.hidden = expanded || matches.length <= limit;
+      if (more) more.hidden = expanded || matches.length <= limit;
+      if (empty) empty.hidden = matches.some((card) => !card.hasAttribute('data-featured'));
+      allOnly.forEach((node) => { node.hidden = filter !== 'all'; });
       if (!animate) return;
       if (!aosDropped) {
         aosDropped = true;
         cards.forEach((card) => card.removeAttribute('data-aos'));
       }
-      status.textContent = `Showing ${shown.size} ${shown.size === 1 ? 'project' : 'projects'}`;
+      status.textContent = `Showing ${shown.size} ${shown.size === 1 ? noun : `${noun}s`}`;
       if (!reducedMotion.matches) {
         appeared.forEach((card, i) => card.animate(
           [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }],
@@ -526,9 +536,9 @@
       chips.forEach((other) => other.setAttribute('aria-pressed', String(other === chip)));
       render(true);
     }));
-    more.addEventListener('click', () => {
+    more?.addEventListener('click', () => {
       expanded = true;
-      const firstNew = cards.find((card) => card.hidden && (filter === 'all' || card.dataset.cat === filter));
+      const firstNew = cards.find((card) => card.hidden && matchesFilter(card));
       render(true);
       // keep focus in the grid: the button disappears
       if (firstNew) {

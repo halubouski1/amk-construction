@@ -1989,6 +1989,73 @@
   }
 }
 
+/* ================= Compact: Blog (node 89:4861) */
+@media (max-width: 1279.98px) {
+  .blog-featured {
+    padding-top: m(32);
+  }
+
+  .post-featured {
+    flex-direction: column;
+    align-items: stretch;
+    gap: m(20);
+  }
+
+  .post-featured__media {
+    width: 100%;
+    height: m(260);
+  }
+
+  .post-featured__media img {
+    transition: none;
+  }
+
+  .post-featured__body {
+    gap: m(20);
+  }
+
+  .post-featured__meta {
+    font-size: m(15);
+    line-height: 1.27;
+  }
+
+  .post-featured__title {
+    font-size: m(28);
+    letter-spacing: m(-0.56);
+  }
+
+  .post-featured__lead {
+    font-size: m(17);
+  }
+
+  .post-featured__more {
+    font-size: m(18);
+  }
+
+  .post-grid {
+    margin-top: m(32);
+  }
+
+  .post-grid .prj-card__media {
+    height: m(221);
+  }
+
+  .posts__empty {
+    margin-top: m(24);
+    font-size: m(17);
+  }
+
+  .pagination {
+    margin-top: m(32);
+  }
+
+  .pagination__item {
+    width: m(48);
+    height: m(48);
+    font-size: m(16);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -2025,6 +2092,11 @@
     flex-wrap: wrap;
     align-items: center;
     gap: m(20) m(32);
+  }
+
+  /* Blog: a taller featured photo */
+  .post-featured__media {
+    height: m(400);
   }
 
   /* Projects: two columns */
