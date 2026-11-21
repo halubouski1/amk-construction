@@ -57,6 +57,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 | services (89:2 / 89:425) | done | generated | 2 columns of cards and tiles | done |
 | about (89:3790 / 89:4236) | done | generated | from mobile × --m | done |
 | services/kitchen-remodeling (89:825 / 89:1265) | done | generated | from mobile × --m | done |
+| services/bathroom-remodeling, basement-finishing, showers-and-heated-floors, decks-and-exteriors, interior-and-flooring (no Figma) | generated from the Kitchen structure | generated | as Kitchen | as Kitchen |
 | hotel-services (89:1673 / 89:1931) | done | generated | from mobile × --m | done |
 | projects (89:2166 / 89:2393) | done | generated | 2 columns from 600px | done |
 | projects/marble-bath (89:2607 / 89:2843) | done | generated | facts in a row, story in 2 columns | done |
@@ -87,12 +88,14 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Blog article: `.article-hero` (title + author), `.article-photo` (reuses `.case-photo`), `.article__inner` with a sticky contents box (`[data-toc]`, `initToc` marks the section being read with `aria-current`, desktop only) and `.prose` (long-form text: blocks 28px apart, browser margins off; the table becomes 2 columns on phones with "Who" under "What happens", as in the mobile frame). The inline CTA runs edge to edge on phones. "More guides" reuses the Similar slider (6 guide cards).
 - Contact: `.contact-details` (`<dl>`, big red phone, socials as round `.social-btn`) + `.contact-form#estimate` (the estimate form fields with `c-*` ids plus "About the project"); the service-area block is the home `{{include area}}` with the live map; the FAQ is the last section, so `main > .section:last-child` keeps its bottom space before the footer.
 - Services: photo hero (`.page-hero--services`), home `trust`, `reviews` partials and the home process block, `.svc-grid` (2 columns of `.svc-card`), `.values--four` tiles, FAQ, estimate.
+- The five service pages without a Figma frame are written by `tools/gen-service-pages.py` (data at the top of the script: hero, tiles, optional gallery, timeline, FAQ). Edit it, then `python3 tools/gen-service-pages.py && npm run build`; do not edit those five `src/services/<slug>/index.html` by hand. They use the photo hero of Services (the service photos are 1024–1536px, too small for the full-bleed Kitchen hero); only Bathroom and Showers get a project gallery (the others have one own photo each).
 - Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead); two article table cells fit one line at 1920 (the table is 52px shorter); the Contact form title fits one line on phones (30px shorter).
 - Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
 
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).
 
 ## Content flagged to the client
+- Five generated service pages (bathroom, basement, showers, decks, interior): all copy is ours (tiles, timeline steps, FAQ), written from the site's own wording, with no prices or durations; please review. Bathroom and Showers galleries reuse project photos.
 - Services FAQ: answers 2–4 are ours (Figma has only the first answer).
 - Contact FAQ: answers 2 (from the home FAQ) and 3 (from the service-area text) are ours; Figma has only the first answer.
 - Blog: only the featured guide has a page (`/blog/how-long-does-a-kitchen-remodel-take/`); the 6 guide cards are static, pagination pages 2 and 3 are inert (`aria-disabled`) until there are more posts. Category tags per guide (incl. "Costs") are our choice. Photo b035 from Figma.
