@@ -186,6 +186,9 @@
     { selector: '.values .title', effect: 'fade-up' },
     { selector: '.value-tile', effect: 'fade-up', stagger: 100 },
     { selector: '.work__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
+    { selector: '.section-lead', effect: 'fade-up', delay: 100 },
+    { selector: '.gallery__item', effect: 'fade-up', stagger: 80 },
+    { selector: '.related__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
 
     { selector: '.intro__body > *', effect: 'fade-up', stagger: 100 },
     { selector: '.intro__media', effect: 'fade-up', duration: 1000 },

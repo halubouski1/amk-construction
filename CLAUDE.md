@@ -55,6 +55,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 | Page | Desktop 1920 | Laptop ×0.75 | Tablet | Mobile 360 |
 |---|---|---|---|---|
 | about (89:3790 / 89:4236) | done | generated | from mobile × --m | done |
+| services/kitchen-remodeling (89:825 / 89:1265) | done | generated | from mobile × --m | done |
 | index + popups + dropdowns + mobile menu | done (42:2, 42:624, 42:661, 2004:52, 2004:154) | generated; 1440 OK, 1280 overflows by 70px (fixed laptop widths) — next step | from the mobile frame × --m, no overflow 769–1279 | done (46:2, 57:2, 57:60, 57:93, 47:374), no overflow 320–768 |
 
 ## Deviations from Figma
@@ -73,6 +74,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).
 
 ## Content flagged to the client
+- Kitchen page: FAQ answers 2–4 are draft copy written by us (Figma has the questions and only the first answer); the mobile hero uses the same photo as desktop (the mobile frame shows a different kitchen).
 - FAQ answers 2–6 are draft copy written by us (Figma has only the first answer). No prices or durations were invented; please confirm.
 - Map tooltip notes per town ("Chester County", "Delaware County", …) and the town list link to `#projects` until town pages exist.
 - All service, hotel, project, review and footer links point to sections of this page or to placeholders (`#blog`, `#privacy`, `#terms`, socials, Google reviews).

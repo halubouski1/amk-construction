@@ -174,5 +174,49 @@
       1536
     ],
     "avif": true
+  },
+  "svc-kitchen-hero": {
+    "widths": [
+      750,
+      1280,
+      1440,
+      2048
+    ],
+    "avif": true
+  },
+  "kitchen-k0179": {
+    "widths": [
+      632,
+      948,
+      1264
+    ],
+    "avif": true
+  },
+  "kitchen-k0648": {
+    "widths": [
+      560,
+      747,
+      1120,
+      1494
+    ],
+    "avif": true
+  },
+  "kitchen-k7402": {
+    "widths": [
+      560,
+      747,
+      1120,
+      1494
+    ],
+    "avif": true
+  },
+  "kitchen-k8283": {
+    "widths": [
+      560,
+      747,
+      1120,
+      1494
+    ],
+    "avif": true
   }
 }

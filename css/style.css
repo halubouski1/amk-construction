@@ -44,6 +44,7 @@
   --shadow-pop: 0 24px 56px rgba(23, 23, 26, 0.14);
   --shadow-tip: 0 12px 32px rgba(23, 23, 26, 0.12);
   --hero-overlay: linear-gradient(180deg, rgba(51, 54, 59, 0.09) 14.1%, rgba(0, 0, 0, 0.9) 100%);
+  --hero-overlay-page: linear-gradient(180deg, rgba(23, 23, 26, 0) 0%, #17171a 100%);
   --hero-overlay-compact: linear-gradient(180deg, rgba(23, 23, 26, 0) 3.3%, rgba(23, 23, 26, 0.9) 100%);
   --promo-overlay: linear-gradient(180deg, rgba(23, 23, 26, 0) 0%, rgba(23, 23, 26, 0.8) 100%);
   --font: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -1819,7 +1820,7 @@ h3 {
 }
 
 .faq-item__answer {
-  max-width: 600px;
+  max-width: 860px;
   padding-bottom: 32px;
   font-size: 20px;
   line-height: 1.55;
@@ -2567,6 +2568,136 @@ a.footer__link:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* ---------- Page hero over a full-bleed photo (Service 89:856) */
+.page-hero--cover {
+  position: relative;
+  height: calc(var(--fixed-vh, 1080px) - var(--header-h));
+  min-height: 760px;
+  overflow: hidden;
+  background: var(--c-ink);
+  color: var(--c-paper);
+}
+
+.page-hero--cover .page-hero__media {
+  position: absolute;
+  inset: 0;
+  width: auto;
+}
+
+.page-hero--cover .page-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-page);
+}
+
+.page-hero--cover .page-hero__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 110px;
+  z-index: 1;
+  justify-content: flex-end;
+  gap: 28px;
+  padding: 0 var(--gutter) 0 max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+}
+
+.page-hero--cover .breadcrumbs {
+  color: var(--c-paper-40);
+}
+
+.page-hero--cover .breadcrumbs a {
+  color: rgba(251, 250, 248, 0.6);
+}
+
+.page-hero--cover .breadcrumbs a:hover {
+  color: var(--c-paper);
+}
+
+.page-hero--cover .breadcrumbs [aria-current] {
+  color: rgba(251, 250, 248, 0.9);
+}
+
+.page-hero--cover .page-hero__lead {
+  color: rgba(251, 250, 248, 0.85);
+}
+
+/* lead under a section title */
+.section-lead {
+  margin-top: 24px;
+}
+
+/* ================= Service page (Kitchen remodeling, node 89:825) */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 64px;
+}
+
+.gallery__top {
+  display: grid;
+  grid-template-columns: 1fr 632px;
+  gap: 16px;
+}
+
+.gallery__stack {
+  display: grid;
+  grid-template-rows: 352px 352px;
+  gap: 16px;
+}
+
+.gallery__bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gallery__item {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-panel);
+}
+
+.gallery__item--big {
+  height: 720px;
+}
+
+.gallery__bottom .gallery__item {
+  height: 560px;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Related services: 3 cards per view, the home service card inside a slider */
+.related {
+  overflow-x: clip;
+}
+
+.related__slider {
+  --slider-gap: 16px;
+  margin-top: 64px;
+  column-gap: var(--slider-gap);
+}
+
+.related-card {
+  width: calc((100% - 32px) / 3);
+}
+
+.related .svc-card__media {
+  height: 331px;
+}
+
+/* rows start closer under a lead than under a bare title (home Why) */
+.timeline .why__rows {
+  margin-top: 40px;
 }
 
 /* ================= About (node 89:3790) */

@@ -176,7 +176,9 @@
   .services > .container,
   .projects > .container,
   .hotel > .container,
-  .work > .container {
+  .work > .container,
+  .kprojects > .container,
+  .related > .container {
     display: flex;
     flex-direction: column;
   }
@@ -1377,6 +1379,144 @@
 
   .work .section-head__aside .btn {
     margin-right: 0;
+  }
+}
+
+@media (max-width: 1279.98px) {
+  /* ---------- Page hero over a photo (Service 89:435): photo on top, text below on the page colour */
+  .page-hero--cover {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    background: none;
+    color: var(--c-ink);
+  }
+
+  .page-hero--cover .page-hero__media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: m(300);
+  }
+
+  .page-hero--cover .page-hero__media::after {
+    display: none;
+  }
+
+  .page-hero--cover .page-hero__body {
+    position: static;
+    gap: m(20);
+    padding: m(28) var(--gutter) m(32);
+  }
+
+  .page-hero--cover .breadcrumbs {
+    color: rgba(22, 23, 26, 0.4);
+  }
+
+  .page-hero--cover .breadcrumbs a {
+    color: rgba(22, 23, 26, 0.55);
+  }
+
+  .page-hero--cover .breadcrumbs [aria-current] {
+    color: rgba(22, 23, 26, 0.9);
+  }
+
+  .page-hero--cover .page-hero__lead {
+    color: var(--c-ink-72);
+  }
+
+  .page-hero--cover .btn--outline-light {
+    --btn-fg: var(--c-ink);
+    --btn-border: var(--c-ink-25);
+    --btn-hover-bg: var(--c-ink);
+    --btn-hover-fg: var(--c-paper);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .section-lead {
+    margin-top: m(20);
+  }
+
+  /* ---------- Kitchen projects gallery: one big photo, then 2 × 2 */
+  .kprojects .section-head__text .lead {
+    margin-top: m(16);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: m(12);
+    order: 2;
+    margin-top: m(32);
+  }
+
+  .gallery__top,
+  .gallery__stack,
+  .gallery__bottom {
+    display: contents;
+  }
+
+  .gallery .gallery__item {
+    height: m(210);
+  }
+
+  .gallery .gallery__item--big {
+    grid-column: 1 / -1;
+    height: m(420);
+  }
+
+  .kprojects .section-head__aside {
+    margin-top: m(32);
+  }
+
+  /* ---------- Related services: swipe track with dots */
+  .related .section-head__aside {
+    display: none;
+  }
+
+  .related__slider {
+    --slider-gap: m(12);
+    order: 2;
+    width: 100%;
+    margin: m(32) 0 0;
+    overflow: visible;
+  }
+
+  .related .slider-controls {
+    order: 3;
+    margin-top: m(32);
+  }
+
+  .related-card {
+    width: m(290);
+  }
+
+  .related .svc-card__media {
+    height: m(180);
+  }
+
+  .related .svc-card__head {
+    align-items: center;
+  }
+
+  .related .svc-card__title {
+    font-size: m(19);
+  }
+
+  .related .svc-card__desc {
+    display: block;
+    font-size: m(16);
+  }
+
+  /* timeline rows use the full column (the home Why rows are narrower) */
+  .timeline .why-row__text {
+    max-width: none;
+  }
+
+  .timeline .why__rows {
+    margin-top: m(24);
   }
 }
 
