@@ -3487,6 +3487,42 @@ a.pagination__item:hover {
   height: 363px;
 }
 
+/* ================= Services (node 89:2) */
+.page-hero--services .page-hero__lead {
+  max-width: 640px;
+}
+
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 16px;
+  margin-top: 64px;
+}
+
+.svc-grid .svc-card {
+  gap: 20px;
+}
+
+.svc-grid .svc-card__media {
+  height: 416px;
+}
+
+.svc-grid .svc-card__head {
+  align-items: flex-start;
+}
+
+.svc-grid .svc-card__title {
+  line-height: 1.2;
+}
+
+.svc-grid .svc-card__desc {
+  line-height: 1.55;
+}
+
+.values--four .values__tiles {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 /* ================= Contact (node 89:5420) */
 .contact {
   padding-top: 72px;

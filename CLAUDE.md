@@ -54,6 +54,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 
 | Page | Desktop 1920 | Laptop ×0.75 | Tablet | Mobile 360 |
 |---|---|---|---|---|
+| services (89:2 / 89:425) | done | generated | 2 columns of cards and tiles | done |
 | about (89:3790 / 89:4236) | done | generated | from mobile × --m | done |
 | services/kitchen-remodeling (89:825 / 89:1265) | done | generated | from mobile × --m | done |
 | hotel-services (89:1673 / 89:1931) | done | generated | from mobile × --m | done |
@@ -85,12 +86,14 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Blog: the featured post and the guide cards share one `[data-projects]` wrapper (`initProjects` also runs the blog: `data-cat` can hold several categories, `data-featured` items do not count for the empty state, `[data-projects-empty]` message, `[data-projects-all]` pagination only under "All", `data-noun` for the live status). Guide cards reuse `.prj-grid` + `.prj-card--lg` (`.post-grid` sets the 363px photo).
 - Blog article: `.article-hero` (title + author), `.article-photo` (reuses `.case-photo`), `.article__inner` with a sticky contents box (`[data-toc]`, `initToc` marks the section being read with `aria-current`, desktop only) and `.prose` (long-form text: blocks 28px apart, browser margins off; the table becomes 2 columns on phones with "Who" under "What happens", as in the mobile frame). The inline CTA runs edge to edge on phones. "More guides" reuses the Similar slider (6 guide cards).
 - Contact: `.contact-details` (`<dl>`, big red phone, socials as round `.social-btn`) + `.contact-form#estimate` (the estimate form fields with `c-*` ids plus "About the project"); the service-area block is the home `{{include area}}` with the live map; the FAQ is the last section, so `main > .section:last-child` keeps its bottom space before the footer.
+- Services: photo hero (`.page-hero--services`), home `trust`, `reviews` partials and the home process block, `.svc-grid` (2 columns of `.svc-card`), `.values--four` tiles, FAQ, estimate.
 - Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead); two article table cells fit one line at 1920 (the table is 52px shorter); the Contact form title fits one line on phones (30px shorter).
 - Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
 
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).
 
 ## Content flagged to the client
+- Services FAQ: answers 2–4 are ours (Figma has only the first answer).
 - Contact FAQ: answers 2 (from the home FAQ) and 3 (from the service-area text) are ours; Figma has only the first answer.
 - Blog: only the featured guide has a page (`/blog/how-long-does-a-kitchen-remodel-take/`); the 6 guide cards are static, pagination pages 2 and 3 are inert (`aria-disabled`) until there are more posts. Category tags per guide (incl. "Costs") are our choice. Photo b035 from Figma.
 - Reviews page: "Read all reviews on Google" and "Leave a review" point to the `#google` placeholder until the Google Business profile link is known.

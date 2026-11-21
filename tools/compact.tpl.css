@@ -2284,6 +2284,40 @@
   }
 }
 
+/* ================= Compact: Services (node 89:425) */
+@media (max-width: 1279.98px) {
+  .page-hero--services .page-hero__lead {
+    max-width: none;
+  }
+
+  .svc-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: m(32);
+    margin-top: m(32);
+  }
+
+  .svc-grid .svc-card {
+    gap: m(14);
+  }
+
+  .svc-grid .svc-card__media {
+    height: m(168);
+  }
+
+  .svc-grid .svc-card__title {
+    font-size: m(21);
+  }
+
+  .svc-grid .svc-card__desc {
+    display: block;
+    font-size: m(16);
+  }
+
+  .values--four .values__tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -2345,6 +2379,20 @@
 
   .contact-form .form-actions {
     align-items: flex-start;
+  }
+
+  /* Services: two columns of cards and tiles */
+  .svc-grid,
+  .values--four .values__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .svc-grid {
+    column-gap: m(16);
+  }
+
+  .svc-grid .svc-card__media {
+    height: m(240);
   }
 
   /* Projects: two columns */
