@@ -1783,7 +1783,7 @@
     gap: m(32);
   }
 
-  .prj-grid .prj-card {
+  .prj-card--lg {
     gap: m(14);
   }
 
@@ -1791,19 +1791,19 @@
     height: m(402);
   }
 
-  .prj-grid .prj-card__cat {
+  .prj-card--lg .prj-card__cat {
     font-size: m(15);
     line-height: 1.27;
   }
 
-  .prj-grid .prj-card__title {
+  .prj-card--lg .prj-card__title {
     max-width: none;
     font-size: m(21);
     line-height: 1.2;
     letter-spacing: m(-0.315);
   }
 
-  .prj-grid .prj-card .icon {
+  .prj-card--lg .icon {
     display: inline-block;
     --icon-size: m(18);
   }
@@ -1826,6 +1826,79 @@
   }
 }
 
+/* ================= Compact: project case (node 89:2843) */
+@media (max-width: 1279.98px) {
+  .case-hero__body {
+    gap: m(20);
+    padding-top: m(28);
+  }
+
+  .case-hero__title {
+    font-size: m(38);
+    letter-spacing: m(-1.14);
+  }
+
+  /* facts stack, lines between them only */
+  .case-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-facts__item {
+    gap: m(6);
+    padding: m(14) 0;
+  }
+
+  .case-facts__item:first-child {
+    border-top: 0;
+  }
+
+  .case-facts dt {
+    font-size: m(15);
+    line-height: 1.27;
+  }
+
+  .case-facts dd {
+    font-size: m(19);
+    line-height: 1.26;
+    letter-spacing: m(-0.19);
+  }
+
+  .case-photo {
+    padding-top: m(24);
+  }
+
+  .case-photo img {
+    height: m(460);
+  }
+
+  .case-story__inner {
+    flex-direction: column;
+    gap: m(32);
+  }
+
+  .case-story__title {
+    font-size: m(26);
+    letter-spacing: m(-0.52);
+  }
+
+  .case-story__text {
+    font-size: m(17);
+  }
+
+  .value-tile.value-tile--scope {
+    gap: m(16);
+  }
+
+  .value-tile--scope .value-tile__num {
+    font-size: m(30);
+    letter-spacing: m(-0.6);
+  }
+
+  .similar .prj-card__media {
+    height: m(319);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -1836,6 +1909,22 @@
 
 /* ================= Tablets 769–1279: wider grids, buttons sized to their label */
 @media (min-width: 769px) and (max-width: 1279.98px) {
+  /* Project case: facts in a row, brief and result side by side */
+  .case-facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .case-facts__item,
+  .case-facts__item:first-child {
+    padding: m(14) m(16) 0 0;
+    border-top: 1px solid rgba(22, 23, 26, 0.2);
+  }
+
+  .case-story__inner {
+    flex-direction: row;
+    gap: m(40);
+  }
+
   /* Projects: two columns */
   .prj-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

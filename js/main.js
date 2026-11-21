@@ -182,6 +182,9 @@
     { selector: '.trust__item', effect: 'fade-up', stagger: 100, offset: 0 },
 
     { selector: '.page-hero__body > *', effect: 'fade-up', stagger: 80, offset: 0 },
+    { selector: '.case-hero__body > *', effect: 'fade-up', stagger: 80, offset: 0 },
+    { selector: '.case-story__col', effect: 'fade-up', stagger: 100 },
+    { selector: '.case-gallery .title', effect: 'fade-up' },
     { selector: '.story__title, .story__text > p', effect: 'fade-up', stagger: 100 },
     { selector: '.values .title', effect: 'fade-up' },
     { selector: '.value-tile', effect: 'fade-up', stagger: 100 },

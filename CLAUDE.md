@@ -58,6 +58,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 | services/kitchen-remodeling (89:825 / 89:1265) | done | generated | from mobile × --m | done |
 | hotel-services (89:1673 / 89:1931) | done | generated | from mobile × --m | done |
 | projects (89:2166 / 89:2393) | done | generated | 2 columns from 600px | done |
+| projects/marble-bath (89:2607 / 89:2843) | done | generated | facts in a row, story in 2 columns | done |
 | index + popups + dropdowns + mobile menu | done (42:2, 42:624, 42:661, 2004:52, 2004:154) | generated; 1440 OK, 1280 overflows by 70px (fixed laptop widths) — next step | from the mobile frame × --m, no overflow 769–1279 | done (46:2, 57:2, 57:60, 57:93, 47:374), no overflow 320–768 |
 
 ## Deviations from Figma
@@ -75,11 +76,13 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 
 - Sticky call/estimate bar (mobile, tablet) shows on every page once the home `.hero` or inner `.page-hero` is scrolled past.
 - Projects: category chips filter the grid and "Show more" reveals the rest (`initProjects`, `[data-projects]`, `data-limit="9"`); 6 extra cards (Figma shows 9) so "Show more" and the Hotels chip have something to show. Cards without a project page are `div.prj-card--static` (no hover); only Marble bath links to `/projects/marble-bath/`. On phones "White shaker kitchen with quartz" fits on one line (Figma wraps it; Onest renders ~2% narrower here), so the grid is 23px shorter.
+- Project case page (`/projects/marble-bath/`): `.case-hero` with a `<dl class="case-facts">`, full-bleed `.case-photo` (no scroll animation: it is the LCP image; the 1536px original is upscaled at 1920), scope tiles reuse `.value-tile` (`--scope`), gallery reuses `.gallery`, "Similar projects" reuses `.related__slider` with `.prj-card--lg` cards (5 cards, Figma shows 3, so the arrows scroll). The large project card styles live on `.prj-card--lg` (Projects grid + Similar).
 - Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
 
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).
 
 ## Content flagged to the client
+- Marble bath page: gallery photos b049, b051, b015, b047, b008 come from Figma (originals have EXIF; published files carry no metadata). Similar-project cards have no pages yet (static, no hover).
 - Projects page: the 6 extra cards behind "Show more" (shower, kitchen, deck, bath, 2 hotel) reuse service photos with placeholder captions and towns; please send real project names. Two photos were added from Figma: `prj-pool`, `prj-b061` (the b061 original has GPS EXIF; the published WebP/AVIF carry no metadata).
 - Hotel page: FAQ answers 2–4 are draft copy written by us (Figma has the questions and only the first answer). The 3 service cards are not links yet (no hotel sub-pages in Figma).
 - Kitchen page: FAQ answers 2–4 are draft copy written by us (Figma has the questions and only the first answer); the mobile hero uses the same photo as desktop (the mobile frame shows a different kitchen).

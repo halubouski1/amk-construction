@@ -1196,7 +1196,7 @@
     gap: 42px 12px;
   }
 
-  .prj-grid .prj-card {
+  .prj-card--lg {
     gap: 15px;
   }
 
@@ -1208,13 +1208,80 @@
     gap: 12px;
   }
 
-  .prj-grid .prj-card__title {
+  .prj-card--lg .prj-card__title {
     font-size: 21px;
     letter-spacing: -0.315px;
   }
 
   .prj-more {
     margin-top: 48px;
+  }
+
+  .case-hero__body {
+    gap: 30px;
+    padding-top: 54px;
+  }
+
+  .case-hero__title {
+    font-size: 66px;
+    letter-spacing: -1.98px;
+  }
+
+  .case-facts__item {
+    gap: 4.5px;
+    padding: 18px 18px 0 0;
+    border-top: 1px solid rgba(22, 23, 26, 0.2);
+  }
+
+  .case-facts dt {
+    font-size: 12px;
+  }
+
+  .case-facts dd {
+    font-size: 18px;
+    letter-spacing: -0.18px;
+  }
+
+  .case-photo {
+    padding-top: 42px;
+  }
+
+  .case-photo img {
+    height: 735px;
+  }
+
+  .case-story__inner {
+    gap: 60px;
+  }
+
+  .case-story__col {
+    gap: 15px;
+  }
+
+  .case-story__title {
+    font-size: 30px;
+    letter-spacing: -0.6px;
+  }
+
+  .case-story__text {
+    font-size: 15px;
+  }
+
+  .value-tile.value-tile--scope {
+    gap: 21px;
+  }
+
+  .value-tile--scope .value-tile__num {
+    font-size: 30px;
+    letter-spacing: -0.6px;
+  }
+
+  .similar .section-head__aside .btn {
+    margin-right: 6px;
+  }
+
+  .similar .prj-card__media {
+    height: 453px;
   }
 
   .story {
@@ -3068,7 +3135,7 @@
     gap: calc(32px * var(--m));
   }
 
-  .prj-grid .prj-card {
+  .prj-card--lg {
     gap: calc(14px * var(--m));
   }
 
@@ -3076,19 +3143,19 @@
     height: calc(402px * var(--m));
   }
 
-  .prj-grid .prj-card__cat {
+  .prj-card--lg .prj-card__cat {
     font-size: calc(15px * var(--m));
     line-height: 1.27;
   }
 
-  .prj-grid .prj-card__title {
+  .prj-card--lg .prj-card__title {
     max-width: none;
     font-size: calc(21px * var(--m));
     line-height: 1.2;
     letter-spacing: calc(-0.315px * var(--m));
   }
 
-  .prj-grid .prj-card .icon {
+  .prj-card--lg .icon {
     display: inline-block;
     --icon-size: calc(18px * var(--m));
   }
@@ -3111,6 +3178,79 @@
   }
 }
 
+/* ================= Compact: project case (node 89:2843) */
+@media (max-width: 1279.98px) {
+  .case-hero__body {
+    gap: calc(20px * var(--m));
+    padding-top: calc(28px * var(--m));
+  }
+
+  .case-hero__title {
+    font-size: calc(38px * var(--m));
+    letter-spacing: calc(-1.14px * var(--m));
+  }
+
+  /* facts stack, lines between them only */
+  .case-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-facts__item {
+    gap: calc(6px * var(--m));
+    padding: calc(14px * var(--m)) 0;
+  }
+
+  .case-facts__item:first-child {
+    border-top: 0;
+  }
+
+  .case-facts dt {
+    font-size: calc(15px * var(--m));
+    line-height: 1.27;
+  }
+
+  .case-facts dd {
+    font-size: calc(19px * var(--m));
+    line-height: 1.26;
+    letter-spacing: calc(-0.19px * var(--m));
+  }
+
+  .case-photo {
+    padding-top: calc(24px * var(--m));
+  }
+
+  .case-photo img {
+    height: calc(460px * var(--m));
+  }
+
+  .case-story__inner {
+    flex-direction: column;
+    gap: calc(32px * var(--m));
+  }
+
+  .case-story__title {
+    font-size: calc(26px * var(--m));
+    letter-spacing: calc(-0.52px * var(--m));
+  }
+
+  .case-story__text {
+    font-size: calc(17px * var(--m));
+  }
+
+  .value-tile.value-tile--scope {
+    gap: calc(16px * var(--m));
+  }
+
+  .value-tile--scope .value-tile__num {
+    font-size: calc(30px * var(--m));
+    letter-spacing: calc(-0.6px * var(--m));
+  }
+
+  .similar .prj-card__media {
+    height: calc(319px * var(--m));
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -3121,6 +3261,22 @@
 
 /* ================= Tablets 769–1279: wider grids, buttons sized to their label */
 @media (min-width: 769px) and (max-width: 1279.98px) {
+  /* Project case: facts in a row, brief and result side by side */
+  .case-facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .case-facts__item,
+  .case-facts__item:first-child {
+    padding: calc(14px * var(--m)) calc(16px * var(--m)) 0 0;
+    border-top: 1px solid rgba(22, 23, 26, 0.2);
+  }
+
+  .case-story__inner {
+    flex-direction: row;
+    gap: calc(40px * var(--m));
+  }
+
   /* Projects: two columns */
   .prj-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
