@@ -61,6 +61,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 | projects/marble-bath (89:2607 / 89:2843) | done | generated | facts in a row, story in 2 columns | done |
 | reviews (89:3049 / 89:3431) | done | generated | 2 columns, rating row wraps | done |
 | blog (89:4640 / 89:4861) | done | generated | 2 columns, taller featured photo | done |
+| blog/how-long-does-a-kitchen-remodel-take (89:5066 / 89:5259) | done | generated | single column, no contents box | done |
 | index + popups + dropdowns + mobile menu | done (42:2, 42:624, 42:661, 2004:52, 2004:154) | generated; 1440 OK, 1280 overflows by 70px (fixed laptop widths) — next step | from the mobile frame × --m, no overflow 769–1279 | done (46:2, 57:2, 57:60, 57:93, 47:374), no overflow 320–768 |
 
 ## Deviations from Figma
@@ -81,7 +82,8 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Project case page (`/projects/marble-bath/`): `.case-hero` with a `<dl class="case-facts">`, full-bleed `.case-photo` (no scroll animation: it is the LCP image; the 1536px original is upscaled at 1920), scope tiles reuse `.value-tile` (`--scope`), gallery reuses `.gallery`, "Similar projects" reuses `.related__slider` with `.prj-card--lg` cards (5 cards, Figma shows 3, so the arrows scroll). The large project card styles live on `.prj-card--lg` (Projects grid + Similar).
 - Reviews page: `.rating-row` (Google logo, 5.0, stars, count + buttons), topic chips are static `li.chip--static` (the counts describe all 23 Google reviews, only 8 are on the page, so they do not filter), `.reviews-wall__grid` is a 3-column grid with rows stretched to equal height (Figma rows are 319/318/319, 290/290/291, 261/261); cards reuse `.review-card` with `--wall` (light on phones too, unlike the home block).
 - Blog: the featured post and the guide cards share one `[data-projects]` wrapper (`initProjects` also runs the blog: `data-cat` can hold several categories, `data-featured` items do not count for the empty state, `[data-projects-empty]` message, `[data-projects-all]` pagination only under "All", `data-noun` for the live status). Guide cards reuse `.prj-grid` + `.prj-card--lg` (`.post-grid` sets the 363px photo).
-- Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead).
+- Blog article: `.article-hero` (title + author), `.article-photo` (reuses `.case-photo`), `.article__inner` with a sticky contents box (`[data-toc]`, `initToc` marks the section being read with `aria-current`, desktop only) and `.prose` (long-form text: blocks 28px apart, browser margins off; the table becomes 2 columns on phones with "Who" under "What happens", as in the mobile frame). The inline CTA runs edge to edge on phones. "More guides" reuses the Similar slider (6 guide cards).
+- Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead); two article table cells fit one line at 1920 (the table is 52px shorter).
 - Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
 
 - Mobile: review cards keep the full Google review text (the mobile frame shortens/paraphrases the quotes); 2 of the 8 project titles wrap to 3 lines; the mobile popup has Email instead of "About the project" (as in the frames).

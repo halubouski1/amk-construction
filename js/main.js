@@ -188,6 +188,8 @@
     { selector: '.topics__title, .topics__list', effect: 'fade-up', stagger: 100 },
     { selector: '.post-featured', effect: 'fade-up', offset: 0 },
     { selector: '.posts .title, .pagination', effect: 'fade-up' },
+    { selector: '.article-hero__body > *', effect: 'fade-up', stagger: 80, offset: 0 },
+    { selector: '.toc, .inline-cta', effect: 'fade-up' },
     { selector: '.review-card--wall', effect: 'fade-up', stagger: 80, staggerGroup: 3, media: '(min-width: 1280px)' },
     { selector: '.review-card--wall', effect: 'fade-up', media: '(max-width: 1279.98px)' },
     { selector: '.story__title, .story__text > p', effect: 'fade-up', stagger: 100 },
@@ -547,6 +549,32 @@
       }
     });
     render(false);
+  }
+
+  /* ---------- Article contents ([data-toc]): the section being read is marked ----------
+     The current section is the last heading above 40% of the screen; the first one
+     counts until then. aria-current="true" carries the red state. */
+  function initToc() {
+    const toc = document.querySelector('[data-toc]');
+    if (!toc) return;
+    const links = [...toc.querySelectorAll('a[href^="#"]')];
+    const targets = links.map((link) => document.getElementById(link.hash.slice(1))).filter(Boolean);
+    if (!targets.length) return;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const line = innerHeight * 0.4;
+      let index = 0;
+      targets.forEach((target, i) => { if (target.getBoundingClientRect().top < line) index = i; });
+      links.forEach((link, i) => {
+        if (i === index) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
   }
 
   /* ---------- Custom dropdown ([data-dropdown], Project type) ----------
@@ -1055,6 +1083,7 @@
   initStickyCta();
   initSlideshow();
   initAccordion();
+  initToc();
   initDropdowns();
   initModal();
   initForms();

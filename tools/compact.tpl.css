@@ -2056,6 +2056,159 @@
   }
 }
 
+/* ================= Compact: blog article (node 89:5259) */
+@media (max-width: 1279.98px) {
+  .article-hero__body {
+    gap: m(20);
+    padding-top: m(28);
+  }
+
+  .article-hero__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: m(20);
+  }
+
+  .article-hero__title {
+    font-size: m(38);
+    letter-spacing: m(-1.14);
+  }
+
+  .author__photo {
+    width: m(48);
+    height: m(48);
+  }
+
+  .author__name {
+    font-size: m(17);
+  }
+
+  .author__meta {
+    font-size: m(15);
+  }
+
+  .article-photo {
+    padding-top: m(24);
+  }
+
+  .article-photo img {
+    height: m(280);
+  }
+
+  .article {
+    padding-top: m(40);
+  }
+
+  .article__inner {
+    display: block;
+  }
+
+  .prose {
+    gap: m(20);
+  }
+
+  .prose p {
+    font-size: m(17);
+  }
+
+  .prose h2 {
+    font-size: m(26);
+    letter-spacing: m(-0.52);
+  }
+
+  .prose h3 {
+    font-size: m(21);
+    letter-spacing: 0;
+  }
+
+  .prose h4 {
+    font-size: m(18);
+  }
+
+  .prose ol,
+  .prose ul {
+    padding-left: m(26);
+    font-size: m(17);
+  }
+
+  /* two columns: "who" moves under "what happens" */
+  .prose table {
+    font-size: m(15);
+  }
+
+  .prose table,
+  .prose thead,
+  .prose tbody {
+    display: block;
+  }
+
+  .prose tr {
+    display: grid;
+    grid-template-columns: m(120) minmax(0, 1fr);
+  }
+
+  .prose th,
+  .prose td {
+    padding: m(12);
+  }
+
+  .prose thead th:first-child,
+  .prose thead th:nth-child(2) {
+    width: auto;
+  }
+
+  .prose thead th:nth-child(3) {
+    display: none;
+  }
+
+  .prose tbody th {
+    grid-row: span 2;
+  }
+
+  .prose tbody td:nth-child(2) {
+    padding-bottom: 0;
+  }
+
+  .prose tbody td:nth-child(3) {
+    grid-column: 2;
+    padding-top: 0;
+    font-size: m(13);
+    color: rgba(22, 23, 26, 0.5);
+  }
+
+  .prose__figure {
+    height: m(240);
+  }
+
+  /* the inline CTA runs to the screen edges */
+  .inline-cta {
+    margin: 0 calc(-1 * var(--gutter));
+    padding: m(24);
+    gap: m(16);
+  }
+
+  .prose .inline-cta__title {
+    font-size: m(24);
+    letter-spacing: m(-0.48);
+  }
+
+  .prose .inline-cta__text {
+    font-size: m(16);
+  }
+
+  .inline-cta .btn {
+    align-self: stretch;
+  }
+
+  .article + .more-guides {
+    padding-top: m(32);
+  }
+
+  .more-guides .prj-card__media {
+    height: m(191);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -2097,6 +2250,11 @@
   /* Blog: a taller featured photo */
   .post-featured__media {
     height: m(400);
+  }
+
+  /* Blog article: the inline CTA button sized to its label */
+  .inline-cta .btn {
+    align-self: flex-start;
   }
 
   /* Projects: two columns */
