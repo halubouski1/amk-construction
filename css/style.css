@@ -2990,6 +2990,116 @@ a.footer__link:focus-visible {
   height: 604px;
 }
 
+/* ================= Reviews (node 89:3049) */
+.page-hero--reviews .page-hero__lead {
+  max-width: none;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-top: 8px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rating__logo {
+  width: 44px;
+  height: 44px;
+}
+
+.rating__value {
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -2.16px;
+}
+
+.rating__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rating .stars .icon {
+  --icon-size: 22px;
+}
+
+.rating__count {
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(22, 23, 26, 0.65);
+}
+
+.topics {
+  padding-top: 64px;
+}
+
+.topics__title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.29;
+}
+
+.topics__list {
+  margin-top: 20px;
+}
+
+/* topic counts are statistics, not filters */
+.chip--static {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+
+.chip--static:hover {
+  border-color: rgba(22, 23, 26, 0.2);
+}
+
+.chip__count {
+  color: var(--c-red);
+}
+
+.reviews-wall {
+  padding-top: 56px;
+}
+
+/* rows of three with equal card heights per row, as in Figma */
+.reviews-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 16px;
+}
+
+.review-card--wall {
+  gap: 18px;
+  padding: 36px;
+}
+
+.review-card--wall .review-card__author {
+  gap: 12px;
+}
+
+.review-card--wall .review-card__date {
+  font-size: 15px;
+  line-height: 1.27;
+}
+
+.review-card--wall .review-card__google {
+  width: 22px;
+  height: 22px;
+}
+
+.review-card--wall .review-card__text {
+  line-height: 1.55;
+}
+
 /* ================= About (node 89:3790) */
 
 /* Figma: 150 above; the text column ends 116 above the trust bar */

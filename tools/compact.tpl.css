@@ -1899,6 +1899,96 @@
   }
 }
 
+/* ================= Compact: Reviews (node 89:3431) */
+@media (max-width: 1279.98px) {
+  .rating-row {
+    flex-direction: column;
+    align-self: stretch;
+    align-items: stretch;
+    gap: m(20);
+    padding-top: 0;
+  }
+
+  .rating__logo {
+    width: m(34);
+    height: m(34);
+  }
+
+  .rating__value {
+    font-size: m(52);
+    letter-spacing: m(-1.56);
+  }
+
+  .rating .stars .icon {
+    --icon-size: m(18);
+  }
+
+  .rating__count {
+    font-size: m(14);
+    line-height: 1.29;
+  }
+
+  .topics {
+    padding-top: m(40);
+  }
+
+  .topics__title {
+    font-size: m(19);
+    line-height: 1.26;
+  }
+
+  .topics__list {
+    margin-top: m(20);
+  }
+
+  .reviews-wall {
+    padding-top: m(32);
+  }
+
+  .reviews-wall__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: m(16);
+  }
+
+  /* light cards here (the home reviews block is dark on phones) */
+  .review-card--wall {
+    gap: m(18);
+    padding: m(24);
+    background: var(--c-panel);
+    color: var(--c-ink);
+  }
+
+  .review-card--wall .review-card__avatar {
+    width: m(48);
+    height: m(48);
+    background: var(--c-ink);
+    color: var(--c-paper);
+    font-size: m(16);
+  }
+
+  .review-card--wall .review-card__name {
+    font-size: m(18);
+  }
+
+  .review-card--wall .review-card__date {
+    font-size: m(15);
+    color: var(--c-ink-60);
+  }
+
+  .review-card--wall .review-card__google {
+    width: m(22);
+    height: m(22);
+  }
+
+  .review-card--wall .stars .icon {
+    --icon-size: m(18);
+  }
+
+  .review-card--wall .review-card__text {
+    font-size: m(17);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -1923,6 +2013,18 @@
   .case-story__inner {
     flex-direction: row;
     gap: m(40);
+  }
+
+  /* Reviews: two columns, rating and buttons in a row */
+  .reviews-wall__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rating-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: m(20) m(32);
   }
 
   /* Projects: two columns */

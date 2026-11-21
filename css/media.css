@@ -1284,6 +1284,79 @@
     height: 453px;
   }
 
+  .rating-row {
+    gap: 30px;
+    padding-top: 6px;
+  }
+
+  .rating {
+    gap: 10.5px;
+  }
+
+  .rating__logo {
+    width: 33px;
+    height: 33px;
+  }
+
+  .rating__value {
+    font-size: 54px;
+    letter-spacing: -1.62px;
+  }
+
+  .rating__meta {
+    gap: 4.5px;
+  }
+
+  .rating .stars .icon {
+    --icon-size: 16.5px;
+  }
+
+  .rating__count {
+    font-size: 12px;
+  }
+
+  .topics {
+    padding-top: 48px;
+  }
+
+  .topics__title {
+    font-size: 18px;
+  }
+
+  .topics__list {
+    margin-top: 15px;
+  }
+
+  .chip--static {
+    gap: 6px;
+  }
+
+  .reviews-wall {
+    padding-top: 42px;
+  }
+
+  .reviews-wall__grid {
+    gap: 12px;
+  }
+
+  .review-card--wall {
+    gap: 13.5px;
+    padding: 27px;
+  }
+
+  .review-card--wall .review-card__author {
+    gap: 9px;
+  }
+
+  .review-card--wall .review-card__date {
+    font-size: 11.25px;
+  }
+
+  .review-card--wall .review-card__google {
+    width: 16.5px;
+    height: 16.5px;
+  }
+
   .story {
     padding: 112.5px 0 87px;
   }
@@ -3251,6 +3324,96 @@
   }
 }
 
+/* ================= Compact: Reviews (node 89:3431) */
+@media (max-width: 1279.98px) {
+  .rating-row {
+    flex-direction: column;
+    align-self: stretch;
+    align-items: stretch;
+    gap: calc(20px * var(--m));
+    padding-top: 0;
+  }
+
+  .rating__logo {
+    width: calc(34px * var(--m));
+    height: calc(34px * var(--m));
+  }
+
+  .rating__value {
+    font-size: calc(52px * var(--m));
+    letter-spacing: calc(-1.56px * var(--m));
+  }
+
+  .rating .stars .icon {
+    --icon-size: calc(18px * var(--m));
+  }
+
+  .rating__count {
+    font-size: calc(14px * var(--m));
+    line-height: 1.29;
+  }
+
+  .topics {
+    padding-top: calc(40px * var(--m));
+  }
+
+  .topics__title {
+    font-size: calc(19px * var(--m));
+    line-height: 1.26;
+  }
+
+  .topics__list {
+    margin-top: calc(20px * var(--m));
+  }
+
+  .reviews-wall {
+    padding-top: calc(32px * var(--m));
+  }
+
+  .reviews-wall__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: calc(16px * var(--m));
+  }
+
+  /* light cards here (the home reviews block is dark on phones) */
+  .review-card--wall {
+    gap: calc(18px * var(--m));
+    padding: calc(24px * var(--m));
+    background: var(--c-panel);
+    color: var(--c-ink);
+  }
+
+  .review-card--wall .review-card__avatar {
+    width: calc(48px * var(--m));
+    height: calc(48px * var(--m));
+    background: var(--c-ink);
+    color: var(--c-paper);
+    font-size: calc(16px * var(--m));
+  }
+
+  .review-card--wall .review-card__name {
+    font-size: calc(18px * var(--m));
+  }
+
+  .review-card--wall .review-card__date {
+    font-size: calc(15px * var(--m));
+    color: var(--c-ink-60);
+  }
+
+  .review-card--wall .review-card__google {
+    width: calc(22px * var(--m));
+    height: calc(22px * var(--m));
+  }
+
+  .review-card--wall .stars .icon {
+    --icon-size: calc(18px * var(--m));
+  }
+
+  .review-card--wall .review-card__text {
+    font-size: calc(17px * var(--m));
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
@@ -3275,6 +3438,18 @@
   .case-story__inner {
     flex-direction: row;
     gap: calc(40px * var(--m));
+  }
+
+  /* Reviews: two columns, rating and buttons in a row */
+  .reviews-wall__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rating-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(20px * var(--m)) calc(32px * var(--m));
   }
 
   /* Projects: two columns */

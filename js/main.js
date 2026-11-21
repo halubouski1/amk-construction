@@ -185,6 +185,9 @@
     { selector: '.case-hero__body > *', effect: 'fade-up', stagger: 80, offset: 0 },
     { selector: '.case-story__col', effect: 'fade-up', stagger: 100 },
     { selector: '.case-gallery .title', effect: 'fade-up' },
+    { selector: '.topics__title, .topics__list', effect: 'fade-up', stagger: 100 },
+    { selector: '.review-card--wall', effect: 'fade-up', stagger: 80, staggerGroup: 3, media: '(min-width: 1280px)' },
+    { selector: '.review-card--wall', effect: 'fade-up', media: '(max-width: 1279.98px)' },
     { selector: '.story__title, .story__text > p', effect: 'fade-up', stagger: 100 },
     { selector: '.values .title', effect: 'fade-up' },
     { selector: '.value-tile', effect: 'fade-up', stagger: 100 },
@@ -210,7 +213,7 @@
     { selector: '.projects__slider', effect: 'fade-up', delay: 100, media: '(min-width: 1280px)' },
 
     { selector: '.reviews__summary', effect: 'fade-up' },
-    { selector: '.review-card', effect: 'fade-up', stagger: 100, media: '(min-width: 1280px)' },
+    { selector: '.review-card:not(.review-card--wall)', effect: 'fade-up', stagger: 100, media: '(min-width: 1280px)' },
 
     { selector: '.step', effect: 'fade-up', stagger: 100 },
 
