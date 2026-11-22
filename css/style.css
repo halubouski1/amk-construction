@@ -3816,6 +3816,23 @@ main > .section:last-child {
   }
 }
 
+/* ================= Touch: no grey tap flash (FAQ, buttons, links); slides swipe like the
+   text-only Google reviews track: a finger on a photo or a card link starts the swipe instead of
+   the long-press menu, image drag or selection */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swiper-slide {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.swiper-slide img {
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
 /* ================= Design-only line breaks */
 
 .br-compact {
