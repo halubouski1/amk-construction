@@ -23,8 +23,8 @@
         </div>
         <p class="page-hero__note d-only">Free written estimate, no obligation</p>
       </div>
-      <div class="page-hero__media">
-        {{pic svc-bath||(max-width: 1279.98px) 100vw, (min-width: 1920px) 1112px, 820px|820|988|Remodeled bathroom with a glass walk-in shower and a white vanity|lcp}}
+      <div class="page-hero__media" data-slideshow data-interval="4500" role="group" aria-roledescription="carousel" aria-label="Projects we finished">
+        {{slides (max-width: 1279.98px) 100vw, (min-width: 1920px) 1112px, 820px|820|988|Projects we finished|svc-bath:Remodeled bathroom with a glass walk-in shower and a white vanity;prj-chevron:Bathroom with a double vanity and a chevron tile wall;prj-bluetile:Walk-in shower with blue subway tile;prj-b042:Master bathroom with a navy vanity and marble floor}}
       </div>
     </section>
 
@@ -76,7 +76,7 @@
 
     <section class="section why timeline" aria-labelledby="timeline-title">
       <div class="container">
-        <h2 class="title" id="timeline-title">From estimate <br>to first shower</h2>
+        <h2 class="title" id="timeline-title">From estimate <br class="br-compact">to first shower</h2>
         <p class="lead section-lead">How a bathroom remodel runs, <br class="br-compact">step by step.</p>
         <ol class="why__rows">
           <li class="why-row"><span class="why-row__num">01</span><h3 class="why-row__title">Design and estimate</h3><p class="why-row__text">We measure, talk through layout and finishes, and send a written estimate.</p></li>

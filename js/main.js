@@ -30,7 +30,9 @@
       const target = id === 'top' ? document.body : document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      const y = id === 'top' ? 0 : target.getBoundingClientRect().top + scrollY;
+      // [data-anchor-gap] on a link's container keeps that many px above the target (article contents)
+      const gap = Number(link.closest('[data-anchor-gap]')?.dataset.anchorGap) || 0;
+      const y = id === 'top' ? 0 : target.getBoundingClientRect().top + scrollY - gap;
       // Going up the header comes back, so leave room for it; going down it hides
       const offset = y < scrollY && header ? -header.offsetHeight : 0;
       if (lenis) lenis.scrollTo(y + offset, { duration: 1.2 });
@@ -444,6 +446,7 @@
     document.querySelectorAll('[data-slideshow]').forEach((box) => {
       const slides = [...box.querySelectorAll('[data-slide]')];
       if (slides.length < 2 || reducedMotion.matches) return;
+      const interval = Number(box.dataset.interval) || SLIDE_TIME; // page heroes change slower
       let current = 0;
       let timer = 0;
       let visible = false;
@@ -465,7 +468,7 @@
         timer = setTimeout(() => {
           show(current + 1);
           run();
-        }, SLIDE_TIME);
+        }, interval);
       };
 
       new IntersectionObserver(([entry]) => {
@@ -508,17 +511,42 @@
     const more = list.querySelector('[data-projects-more]');
     const status = list.querySelector('[data-projects-status]');
     const empty = list.querySelector('[data-projects-empty]');
+    const pager = list.querySelector('[data-pagination]');
     const allOnly = [...list.querySelectorAll('[data-projects-all]')];
     const noun = list.dataset.noun || 'project';
     const limit = Number(list.dataset.limit) || 9;
+    const perPage = Number(list.dataset.perPage) || 0; // Blog: pages of N, the featured item on page 1
+    const header = document.querySelector('[data-header]');
     let filter = 'all';
     let expanded = false;
+    let page = 1;
+    let pages = 1;
     let aosDropped = false;
     const matchesFilter = (card) => filter === 'all' || card.dataset.cat.split(' ').includes(filter);
+    const isFeatured = (card) => card.hasAttribute('data-featured');
+
+    const renderPager = () => {
+      if (!pager) return;
+      pager.hidden = pages < 2;
+      pager.innerHTML = Array.from({ length: pages }, (_, i) => {
+        const n = i + 1;
+        const current = n === page ? ' aria-current="page"' : '';
+        return `<button class="pagination__item" type="button" data-page="${n}" aria-label="Page ${n}"${current}>${n}</button>`;
+      }).join('');
+    };
 
     const render = (animate) => {
       const matches = cards.filter(matchesFilter);
-      const shown = new Set(expanded ? matches : matches.slice(0, limit));
+      let shown;
+      if (perPage) {
+        const items = matches.filter((card) => !isFeatured(card));
+        pages = Math.max(1, Math.ceil(items.length / perPage));
+        page = Math.min(page, pages);
+        const featured = page === 1 ? matches.filter(isFeatured) : [];
+        shown = new Set([...featured, ...items.slice((page - 1) * perPage, page * perPage)]);
+      } else {
+        shown = new Set(expanded ? matches : matches.slice(0, limit));
+      }
       const appeared = [];
       cards.forEach((card) => {
         const show = shown.has(card);
@@ -526,14 +554,17 @@
         card.hidden = !show;
       });
       if (more) more.hidden = expanded || matches.length <= limit;
-      if (empty) empty.hidden = matches.some((card) => !card.hasAttribute('data-featured'));
+      if (empty) empty.hidden = matches.some((card) => !isFeatured(card));
       allOnly.forEach((node) => { node.hidden = filter !== 'all'; });
+      renderPager();
       if (!animate) return;
       if (!aosDropped) {
         aosDropped = true;
         cards.forEach((card) => card.removeAttribute('data-aos'));
       }
-      status.textContent = `Showing ${shown.size} ${shown.size === 1 ? noun : `${noun}s`}`;
+      const count = [...shown].length;
+      const pageNote = pages > 1 ? `Page ${page} of ${pages}. ` : '';
+      status.textContent = `${pageNote}Showing ${count} ${count === 1 ? noun : `${noun}s`}`;
       if (!reducedMotion.matches) {
         appeared.forEach((card, i) => card.animate(
           [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }],
@@ -547,6 +578,7 @@
       if (chip.dataset.filter === filter) return;
       filter = chip.dataset.filter;
       expanded = false;
+      page = 1;
       chips.forEach((other) => other.setAttribute('aria-pressed', String(other === chip)));
       render(true);
     }));
@@ -559,6 +591,23 @@
         if (!firstNew.matches('a')) firstNew.setAttribute('tabindex', '-1');
         firstNew.focus({ preventScroll: true });
       }
+    });
+    // page buttons: show that page, then glide up to its first item (the header comes back
+    // on the way up, so leave room for it plus a small gap)
+    pager?.addEventListener('click', (e) => {
+      const button = e.target.closest('[data-page]');
+      if (!button || Number(button.dataset.page) === page) return;
+      page = Number(button.dataset.page);
+      render(true);
+      const first = cards.find((card) => !card.hidden && !isFeatured(card));
+      if (!first) return;
+      // offsetTop, not getBoundingClientRect: the card is mid fade-in (translateY) right now
+      let top = 0;
+      for (let el = first; el; el = el.offsetParent) top += el.offsetTop;
+      const y = top - (header ? header.offsetHeight : 0) - 24;
+      if (lenis) lenis.scrollTo(y, { duration: 1.2 });
+      else scrollTo({ top: y, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+      pager.querySelector('[aria-current]')?.focus({ preventScroll: true });
     });
     render(false);
   }

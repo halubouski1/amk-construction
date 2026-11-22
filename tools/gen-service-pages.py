@@ -29,7 +29,10 @@ PAGES = {
         meta='Bathroom remodeling in West Chester and Chester County: tile, vanities, glass showers, tub-to-shower conversions and heated floors. Free written estimate.',
         title='Bathroom remodeling <br>in West Chester, PA',
         lead='Tile, vanities, glass showers and tub‑to‑shower conversions, <br class="br-design">planned and built by our own crew.',
-        hero=('svc-bath', 'Remodeled bathroom with a glass walk-in shower and a white vanity'),
+        hero=[('svc-bath', 'Remodeled bathroom with a glass walk-in shower and a white vanity'),
+              ('prj-chevron', 'Bathroom with a double vanity and a chevron tile wall'),
+              ('prj-bluetile', 'Walk-in shower with blue subway tile'),
+              ('prj-b042', 'Master bathroom with a navy vanity and marble floor')],
         included_title='What a bathroom <br>remodel includes',
         tiles=[('Tile', 'Floor and wall tile, from large‑format porcelain to mosaic.'),
                ('Vanities', 'Single or double vanities with new tops and faucets.'),
@@ -41,7 +44,7 @@ PAGES = {
                      big=('prj-chevron', 'Bathroom with a double vanity and a chevron tile wall'),
                      stack=[('prj-bluetile', 'Walk-in shower with blue subway tile'), ('prj-b042', 'Master bathroom with a navy vanity and marble floor')],
                      bottom=[('prj-b015', 'Bathroom with a glass shower, a teak bench and a white vanity'), ('prj-b047', 'Double vanity with a chevron tile wall and wainscoting'), ('prj-marble', 'Marble bathroom with a freestanding tub')]),
-        timeline_title='From estimate <br>to first shower',
+        timeline_title='From estimate <br class="br-compact">to first shower',
         timeline_lead='How a bathroom remodel runs, <br class="br-compact">step by step.',
         steps=[('Design and estimate', 'We measure, talk through layout and finishes, and send a written estimate.'),
                ('Permits and ordering', 'We pull permits and order the vanity, tile, fixtures and glass.'),
@@ -58,7 +61,7 @@ PAGES = {
         meta='Basement finishing in West Chester and Chester County: framing, egress windows, guest suites, theater rooms, lighting and flooring. Free written estimate.',
         title='Basement finishing <br>in West Chester, PA',
         lead='Framing, egress windows, theater rooms and guest suites, <br class="br-design">with permits and licensed trades.',
-        hero=('svc-basement', 'Finished basement with a stone fireplace and wood-look floor'),
+        hero=[('svc-basement', 'Finished basement with a stone fireplace and wood-look floor')],
         included_title='What a basement <br>finish includes',
         tiles=[('Framing and insulation', 'Walls framed, insulated and closed with drywall.'),
                ('Egress windows', 'Code‑compliant windows for bedrooms and safety.'),
@@ -67,7 +70,7 @@ PAGES = {
                ('Lighting and electrical', 'Recessed lights, outlets and circuits by licensed electricians.'),
                ('Flooring', 'LVP or carpet that suits a below‑grade space.')],
         gallery=None,
-        timeline_title='From estimate <br>to move‑in',
+        timeline_title='From estimate <br class="br-compact">to move‑in',
         timeline_lead='How a basement finish runs, <br class="br-compact">step by step.',
         steps=[('Design and estimate', 'We measure, plan the rooms with you and send a written estimate.'),
                ('Permits', 'We pull the permit and plan the inspections around the build.'),
@@ -82,8 +85,12 @@ PAGES = {
     'showers-and-heated-floors': dict(
         meta='Walk-in and steam showers and heated tile floors in West Chester and Chester County, built and waterproofed by our own crew. Free written estimate.',
         title='Showers and heated floors <br>in West Chester, PA',
+        title_class='page-hero__title--long',  # 88px would take 3 lines
         lead='Walk‑in and steam showers and heated tile floors, <br class="br-design">built and waterproofed by our own crew.',
-        hero=('svc-shower', 'Walk-in shower with large marble-look tile and a glass door'),
+        hero=[('svc-shower', 'Walk-in shower with large marble-look tile and a glass door'),
+              ('prj-b049', 'Marble-look shower wall with a lit chevron niche'),
+              ('prj-b008', 'Walk-in glass shower with a hexagon tile floor under skylights'),
+              ('prj-b061', 'Shower with a blue hexagon tile wall')],
         included_title='What a shower <br>project includes',
         tiles=[('Walk‑in showers', 'Curbless or low‑curb showers with glass.'),
                ('Steam showers', 'Sealed enclosures with a steam generator.'),
@@ -95,7 +102,7 @@ PAGES = {
                      big=('prj-b049', 'Marble-look shower wall with a lit chevron niche'),
                      stack=[('prj-bluetile', 'Walk-in shower with blue subway tile'), ('prj-b061', 'Shower with a blue hexagon tile wall')],
                      bottom=[('prj-b008', 'Walk-in glass shower with a hexagon tile floor under skylights'), ('svc-shower', 'Walk-in shower with large marble-look tile'), ('prj-b035', 'Shower wall with blue glazed subway tile')]),
-        timeline_title='From estimate <br>to first shower',
+        timeline_title='From estimate <br class="br-compact">to first shower',
         timeline_lead='How a shower project runs, <br class="br-compact">step by step.',
         steps=[('Design and estimate', 'We measure, pick the layout and finishes with you and send a written estimate.'),
                ('Ordering', 'Tile, glass, valves and heating mats ordered before demolition.'),
@@ -111,7 +118,8 @@ PAGES = {
         meta='Composite and wood decks, railings, fiber cement and vinyl siding in West Chester and Chester County, built by our own crew. Free written estimate.',
         title='Decks and exteriors <br>in West Chester, PA',
         lead='Composite and wood decks, fiber cement and vinyl siding, <br class="br-design">built and installed by our own crew.',
-        hero=('svc-exterior', 'New composite deck with white railings'),
+        hero=[('svc-exterior', 'New composite deck with white railings'),
+              ('prj-pool', 'Backyard pool with a paver surround')],
         included_title='What a deck <br>or siding job includes',
         tiles=[('Composite decks', 'Low‑maintenance boards with hidden fasteners.'),
                ('Wood decks', 'Pressure‑treated or hardwood decking.'),
@@ -120,7 +128,7 @@ PAGES = {
                ('Fiber cement siding', 'Lap and panel siding with new trim.'),
                ('Vinyl siding', 'Insulated or standard vinyl siding.')],
         gallery=None,
-        timeline_title='From estimate <br>to first cookout',
+        timeline_title='From estimate <br class="br-compact">to first cookout',
         timeline_lead='How a deck or siding job runs, <br class="br-compact">step by step.',
         steps=[('Design and estimate', 'We measure, bring material samples and send a written estimate.'),
                ('Permits and materials', 'We pull the permit and order boards, railings or siding.'),
@@ -136,7 +144,8 @@ PAGES = {
         meta='LVP and tile floors, painting, wallpaper, mudrooms and saunas in West Chester and Chester County, done by our own crew. Free written estimate.',
         title='Interior and flooring <br>in West Chester, PA',
         lead='LVP and tile floors, paint, wallpaper, mudrooms and saunas, <br class="br-design">done by our own crew.',
-        hero=('svc-floor', 'Wide-plank vinyl floor in a remodeled kitchen'),
+        hero=[('svc-floor', 'Wide-plank vinyl floor in a remodeled kitchen'),
+              ('kitchen-k8283', 'White kitchen with a marble-look counter and vinyl plank floor')],
         included_title='What interior <br>work includes',
         tiles=[('LVP floors', 'Waterproof luxury vinyl plank for any room.'),
                ('Tile floors', 'Porcelain and ceramic tile, laid flat and level.'),
@@ -145,7 +154,7 @@ PAGES = {
                ('Mudrooms', 'Built‑in benches, hooks and storage.'),
                ('Saunas', 'Indoor saunas framed, wired and finished.')],
         gallery=None,
-        timeline_title='From estimate <br>to finished room',
+        timeline_title='From estimate <br class="br-compact">to finished room',
         timeline_lead='How interior work runs, <br class="br-compact">step by step.',
         steps=[('Visit and estimate', 'We measure, bring samples and send a written estimate.'),
                ('Materials ordered', 'Flooring, paint and wallpaper ordered for your rooms.'),
@@ -204,9 +213,18 @@ def gallery_html(g):
 '''
 
 
+def hero_media(photos):
+    """One photo, or a crossfading slideshow (initSlideshow) when there are several."""
+    if len(photos) == 1:
+        img, alt = photos[0]
+        return f'<div class="page-hero__media">\n        {{{{pic {img}||{HERO_SIZES}|820|988|{alt}|lcp}}}}\n      </div>'
+    items = ';'.join(f'{img}:{alt}' for img, alt in photos)
+    return (f'<div class="page-hero__media" data-slideshow data-interval="4500" role="group" aria-roledescription="carousel" aria-label="Projects we finished">\n'
+            f'        {{{{slides {HERO_SIZES}|820|988|Projects we finished|{items}}}}}\n      </div>')
+
+
 def page_html(slug, p):
     name = next(s[2] for s in SERVICES if s[0] == slug)
-    hero_img, hero_alt = p['hero']
     tiles = '\n'.join(f'          <li class="value-tile"><h3 class="value-tile__title">{t}</h3><p class="value-tile__text">{d}</p></li>' for t, d in p['tiles'])
     steps = '\n'.join(f'          <li class="why-row"><span class="why-row__num">{i:02d}</span><h3 class="why-row__title">{t}</h3><p class="why-row__text">{d}</p></li>' for i, (t, d) in enumerate(p['steps'], 1))
     faq = []
@@ -239,7 +257,7 @@ def page_html(slug, p):
     <section class="page-hero page-hero--photo page-hero--short page-hero--services" aria-labelledby="page-title">
       <div class="page-hero__body">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/services/">Services</a><span aria-hidden="true">/</span><span aria-current="page">{name}</span></nav>
-        <h1 class="page-hero__title" id="page-title">{p['title']}</h1>
+        <h1 class="{' '.join(filter(None, ['page-hero__title', p.get('title_class')]))}" id="page-title">{p['title']}</h1>
         <p class="page-hero__lead">{p['lead']}</p>
         <div class="page-hero__cta">
           <a class="btn" href="/contact/" data-modal-open>Get a free estimate <span class="icon icon--arrow" aria-hidden="true"></span></a>
@@ -247,9 +265,7 @@ def page_html(slug, p):
         </div>
         <p class="page-hero__note d-only">Free written estimate, no obligation</p>
       </div>
-      <div class="page-hero__media">
-        {{{{pic {hero_img}||{HERO_SIZES}|820|988|{hero_alt}|lcp}}}}
-      </div>
+      {hero_media(p['hero'])}
     </section>
 
     {{{{include trust}}}}

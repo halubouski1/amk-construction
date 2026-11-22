@@ -23,8 +23,8 @@
         </div>
         <p class="page-hero__note d-only">Free written estimate, no obligation</p>
       </div>
-      <div class="page-hero__media">
-        {{pic svc-floor||(max-width: 1279.98px) 100vw, (min-width: 1920px) 1112px, 820px|820|988|Wide-plank vinyl floor in a remodeled kitchen|lcp}}
+      <div class="page-hero__media" data-slideshow data-interval="4500" role="group" aria-roledescription="carousel" aria-label="Projects we finished">
+        {{slides (max-width: 1279.98px) 100vw, (min-width: 1920px) 1112px, 820px|820|988|Projects we finished|svc-floor:Wide-plank vinyl floor in a remodeled kitchen;kitchen-k8283:White kitchen with a marble-look counter and vinyl plank floor}}
       </div>
     </section>
 
@@ -47,7 +47,7 @@
 
     <section class="section why timeline" aria-labelledby="timeline-title">
       <div class="container">
-        <h2 class="title" id="timeline-title">From estimate <br>to finished room</h2>
+        <h2 class="title" id="timeline-title">From estimate <br class="br-compact">to finished room</h2>
         <p class="lead section-lead">How interior work runs, <br class="br-compact">step by step.</p>
         <ol class="why__rows">
           <li class="why-row"><span class="why-row__num">01</span><h3 class="why-row__title">Visit and estimate</h3><p class="why-row__text">We measure, bring samples and send a written estimate.</p></li>

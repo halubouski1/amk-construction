@@ -2186,7 +2186,7 @@ a.footer__link:focus-visible {
   position: relative;
   display: flex;
   color: rgba(251, 250, 248, 0.75);
-  transition: color 0.35s var(--ease);
+  transition: color 0.45s var(--ease);
 }
 
 .social .icon {
@@ -2205,8 +2205,9 @@ a.footer__link:focus-visible {
   margin: -21px 0 0 -21px;
   border-radius: 50%;
   background: var(--c-red);
-  scale: 0;
-  transition: scale 0.4s var(--ease-out);
+  opacity: 0;
+  scale: 0.6;
+  transition: scale 0.6s var(--ease-out), opacity 0.45s var(--ease);
 }
 
 .social:hover,
@@ -2216,17 +2217,10 @@ a.footer__link:focus-visible {
 
 .social:hover::before,
 .social:focus-visible::before {
+  opacity: 1;
   scale: 1;
 }
 
-.social:hover .icon {
-  animation: social-pop 0.5s var(--ease-out);
-}
-
-@keyframes social-pop {
-  40% { scale: 0.8; }
-  100% { scale: 1; }
-}
 
 .footer__bottom {
   margin-top: 80px;
@@ -2760,6 +2754,11 @@ a.footer__link:focus-visible {
   gap: 16px;
 }
 
+/* Reviews: the long title gets the whole row instead of 820px */
+.cta-band--wide .cta-band__text {
+  max-width: none;
+}
+
 /* the estimate form right after the dark band starts without a gap (Projects 89:2304) */
 .cta-band + .estimate {
   padding-top: 0;
@@ -3113,6 +3112,14 @@ a.footer__link:focus-visible {
 
 .post-featured[hidden] {
   display: none;
+}
+
+.blog-featured:has(.post-featured[hidden]) {
+  display: none;
+}
+
+.blog-featured:has(.post-featured[hidden]) + .posts {
+  padding-top: 64px;
 }
 
 .post-featured__media {
@@ -3488,6 +3495,12 @@ a.pagination__item:hover {
 }
 
 /* ================= Services (node 89:2) */
+/* a long service name keeps the title on two lines */
+.page-hero__title--long {
+  font-size: 72px;
+  letter-spacing: -2.16px;
+}
+
 .page-hero--services .page-hero__lead {
   max-width: 640px;
 }
@@ -3602,17 +3615,18 @@ a.pagination__item:hover {
   height: 48px;
   border: 1px solid rgba(22, 23, 26, 0.2);
   border-radius: 50%;
-  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), color 0.35s var(--ease);
+  transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease), color 0.5s var(--ease);
 }
 
 .social-btn .icon {
   --icon-size: 20px;
 }
 
-.social-btn:hover {
-  border-color: var(--c-ink);
-  background: var(--c-ink);
-  color: var(--c-paper);
+.social-btn:hover,
+.social-btn:focus-visible {
+  border-color: var(--c-red);
+  background: rgba(213, 25, 32, 0.06);
+  color: var(--c-red);
 }
 
 .contact-form {

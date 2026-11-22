@@ -1379,6 +1379,10 @@
     gap: 48px;
   }
 
+  .blog-featured:has(.post-featured[hidden]) + .posts {
+    padding-top: 48px;
+  }
+
   .post-featured__media {
     width: 750px;
     height: 465px;
@@ -1568,6 +1572,11 @@
 
   .more-guides .prj-card__media {
     height: 272.25px;
+  }
+
+  .page-hero__title--long {
+    font-size: 54px;
+    letter-spacing: -1.62px;
   }
 
   .page-hero--services .page-hero__lead {
@@ -3711,6 +3720,10 @@
 /* ================= Compact: Blog (node 89:4861) */
 @media (max-width: 1279.98px) {
   .blog-featured {
+    padding-top: calc(32px * var(--m));
+  }
+
+  .blog-featured:has(.post-featured[hidden]) + .posts {
     padding-top: calc(32px * var(--m));
   }
 

@@ -15,7 +15,7 @@
     <section class="page-hero page-hero--photo page-hero--short page-hero--services" aria-labelledby="page-title">
       <div class="page-hero__body">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/services/">Services</a><span aria-hidden="true">/</span><span aria-current="page">Showers and heated floors</span></nav>
-        <h1 class="page-hero__title" id="page-title">Showers and heated floors <br>in West Chester, PA</h1>
+        <h1 class="page-hero__title page-hero__title--long" id="page-title">Showers and heated floors <br>in West Chester, PA</h1>
         <p class="page-hero__lead">Walk‑in and steam showers and heated tile floors, <br class="br-design">built and waterproofed by our own crew.</p>
         <div class="page-hero__cta">
           <a class="btn" href="/contact/" data-modal-open>Get a free estimate <span class="icon icon--arrow" aria-hidden="true"></span></a>
@@ -23,8 +23,8 @@
         </div>
         <p class="page-hero__note d-only">Free written estimate, no obligation</p>
       </div>
-      <div class="page-hero__media">
-        {{pic svc-shower||(max-width: 1279.98px) 100vw, (min-width: 1920px) 1112px, 820px|820|988|Walk-in shower with large marble-look tile and a glass door|lcp}}
+      <div class="page-hero__media" data-slideshow data-interval="4500" role="group" aria-roledescription="carousel" aria-label="Projects we finished">
+        {{slides (max-width: 1279.98px) 100vw, (min-width: 1920px) 1112px, 820px|820|988|Projects we finished|svc-shower:Walk-in shower with large marble-look tile and a glass door;prj-b049:Marble-look shower wall with a lit chevron niche;prj-b008:Walk-in glass shower with a hexagon tile floor under skylights;prj-b061:Shower with a blue hexagon tile wall}}
       </div>
     </section>
 
@@ -76,7 +76,7 @@
 
     <section class="section why timeline" aria-labelledby="timeline-title">
       <div class="container">
-        <h2 class="title" id="timeline-title">From estimate <br>to first shower</h2>
+        <h2 class="title" id="timeline-title">From estimate <br class="br-compact">to first shower</h2>
         <p class="lead section-lead">How a shower project runs, <br class="br-compact">step by step.</p>
         <ol class="why__rows">
           <li class="why-row"><span class="why-row__num">01</span><h3 class="why-row__title">Design and estimate</h3><p class="why-row__text">We measure, pick the layout and finishes with you and send a written estimate.</p></li>

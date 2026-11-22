@@ -1995,6 +1995,10 @@
     padding-top: m(32);
   }
 
+  .blog-featured:has(.post-featured[hidden]) + .posts {
+    padding-top: m(32);
+  }
+
   .post-featured {
     flex-direction: column;
     align-items: stretch;
