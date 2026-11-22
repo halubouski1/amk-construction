@@ -2779,7 +2779,9 @@ a.footer__link:focus-visible {
   max-width: 720px;
 }
 
+/* position: the visually-hidden counts inside stay within the scrolling row on phones */
 .chips {
+  position: relative;
   display: flex;
   gap: 10px;
 }
@@ -3075,6 +3077,10 @@ a.footer__link:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
   gap: 16px;
+}
+
+.reviews-wall__grid > [hidden] {
+  display: none;
 }
 
 .review-card--wall {

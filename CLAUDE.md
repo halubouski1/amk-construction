@@ -48,7 +48,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Sticky bar `[data-sticky-cta]` (`initStickyCta`): compact only, shows after the hero, hides from the estimate form down.
 - Sliders: `createSlider()` for projects and reviews (reviews only on compact; desktop keeps the 2×2 grid). Gap from `--slider-gap` read via `column-gap`; dots `[data-dots-for]`; arrows `[data-<name>-prev|next]` (several per slider allowed). Compact swipe speed 480ms.
 - Popups on compact: the same `<dialog>` as a bottom sheet (scrolls inside on short screens); focus goes to the title, not an input, so the keyboard does not jump the sheet. Dropdowns open upwards when there is no room below (`.select.is-up`).
-- Scroll animations: AOS from the `ANIMATIONS` list in main.js. Hero content uses CSS keyframes (from opacity 0.01).
+- Scroll animations: AOS from the `ANIMATIONS` list in main.js on desktop; on phones and tablets only section titles fade in (`MOBILE_ANIMATIONS`, 24px rise instead of 100px). Hero content uses CSS keyframes (from opacity 0.01).
 
 ## Status (November 2026)
 
@@ -89,7 +89,8 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Contact: `.contact-details` (`<dl>`, big red phone, socials as round `.social-btn`) + `.contact-form#estimate` (the estimate form fields with `c-*` ids plus "About the project"); the service-area block is the home `{{include area}}` with the live map; the FAQ is the last section, so `main > .section:last-child` keeps its bottom space before the footer.
 - Services: photo hero (`.page-hero--services`), home `trust`, `reviews` partials and the home process block, `.svc-grid` (2 columns of `.svc-card`), `.values--four` tiles, FAQ, estimate.
 - The five service pages without a Figma frame are written by `tools/gen-service-pages.py` (data at the top of the script: hero, tiles, optional gallery, timeline, FAQ). Edit it, then `python3 tools/gen-service-pages.py && npm run build`; do not edit those five `src/services/<slug>/index.html` by hand. They use the photo hero of Services (the service photos are 1024–1536px, too small for the full-bleed Kitchen hero); only Bathroom and Showers get a project gallery (the others have one own photo each).
-- Photo heroes crossfade (`data-slideshow data-interval="4500"`, built with the `{{slides SIZES|W|H|LABEL|NAME:ALT;…}}` macro): Hotel, Services and the generated service pages with more than one own photo. About keeps the owner's portrait; Basement has a single photo. Without the featured guide (a filter or page 2+), "Latest guides" moves up (`.blog-featured:has([hidden])`). Article contents links keep 16px above the heading (`data-anchor-gap`). Socials: no pop, a slower fade-in disc in the footer, a soft red outline on Contact.
+- Photo heroes crossfade (`data-slideshow data-interval="2500"`, built with the `{{slides SIZES|W|H|LABEL|NAME:ALT;…}}` macro): Hotel, Services and the generated service pages with more than one own photo. About keeps the owner's portrait; Basement has a single photo. Without the featured guide (a filter or page 2+), "Latest guides" moves up (`.blog-featured:has([hidden])`). Article contents links keep 16px above the heading (`data-anchor-gap`). Socials: no pop, a slower fade-in disc in the footer, a soft red outline on Contact.
+- Reviews: 6 cards (phones 4, `data-limit-compact`), then "Show more reviews" (`initProjects` with `data-cat="review"`). Blog has its own FAQ ("About our guides") before the CTA band.
 - Onest renders about 2% narrower in browsers than in Figma: a few phone text blocks wrap one line shorter (Projects card title, Blog featured lead); two article table cells fit one line at 1920 (the table is 52px shorter); the Contact form title fits one line on phones (30px shorter).
 - Tablets (769–1279): page-hero and CTA-band buttons sit in a row, FAQ questions drop the phone line breaks.
 
@@ -100,6 +101,7 @@ General rules: `CLAUDE-universal.md`. This file holds what is specific to AMK.
 - Services FAQ: answers 2–4 are ours (Figma has only the first answer).
 - Contact FAQ: answers 2 (from the home FAQ) and 3 (from the service-area text) are ours; Figma has only the first answer.
 - Blog: only the featured guide has a page (`/blog/how-long-does-a-kitchen-remodel-take/`); 21 guide cards (6 from Figma + 15 placeholder titles so the pagination has 3 pages) are static until the articles exist. Category tags per guide (incl. "Costs") are our choice. Photo b035 from Figma.
+- Reviews page: only the 8 reviews from Figma are on the page; to show more, send the other Google reviews (the profile has 23). Blog FAQ answers are ours.
 - Reviews page: "Read all reviews on Google" and "Leave a review" point to the `#google` placeholder until the Google Business profile link is known.
 - Marble bath page: gallery photos b049, b051, b015, b047, b008 come from Figma (originals have EXIF; published files carry no metadata). Similar-project cards have no pages yet (static, no hover).
 - Projects page: the 6 extra cards behind "Show more" (shower, kitchen, deck, bath, 2 hotel) reuse service photos with placeholder captions and towns; please send real project names. Two photos were added from Figma: `prj-pool`, `prj-b061` (the b061 original has GPS EXIF; the published WebP/AVIF carry no metadata).

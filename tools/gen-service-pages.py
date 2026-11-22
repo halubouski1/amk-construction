@@ -84,7 +84,7 @@ PAGES = {
     ),
     'showers-and-heated-floors': dict(
         meta='Walk-in and steam showers and heated tile floors in West Chester and Chester County, built and waterproofed by our own crew. Free written estimate.',
-        title='Showers and heated floors <br>in West Chester, PA',
+        title='Showers and <br class="br-compact">heated floors <br>in West Chester, PA',  # phones: Showers and / heated floors / in West Chester, PA
         title_class='page-hero__title--long',  # 88px would take 3 lines
         lead='Walk‑in and steam showers and heated tile floors, <br class="br-design">built and waterproofed by our own crew.',
         hero=[('svc-shower', 'Walk-in shower with large marble-look tile and a glass door'),
@@ -219,7 +219,7 @@ def hero_media(photos):
         img, alt = photos[0]
         return f'<div class="page-hero__media">\n        {{{{pic {img}||{HERO_SIZES}|820|988|{alt}|lcp}}}}\n      </div>'
     items = ';'.join(f'{img}:{alt}' for img, alt in photos)
-    return (f'<div class="page-hero__media" data-slideshow data-interval="4500" role="group" aria-roledescription="carousel" aria-label="Projects we finished">\n'
+    return (f'<div class="page-hero__media" data-slideshow data-interval="2500" role="group" aria-roledescription="carousel" aria-label="Projects we finished">\n'
             f'        {{{{slides {HERO_SIZES}|820|988|Projects we finished|{items}}}}}\n      </div>')
 
 

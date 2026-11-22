@@ -240,9 +240,20 @@
     { selector: '.footer__top > *', effect: 'fade-up', stagger: 80, offset: 0 },
   ];
 
+  /* Phones and tablets: only section titles fade in (a short 24px rise, see compact CSS);
+     cards, rows, tiles and the footer stay put, so scrolling does not keep popping things in */
+  const MOBILE_ANIMATIONS = [
+    {
+      selector: ['.section-head__text > .title', '.why .title', '.process .title', '.values .title', '.case-gallery .title',
+        '.posts .title', '.faq__intro .title', '.area__title', '.reviews__title', '.cta-band__title',
+        '.estimate__panel .title', '.topics__title', '.contact-form__title'].join(', '),
+      effect: 'fade-up',
+    },
+  ];
+
   function initAnimations() {
     if (!window.AOS || reducedMotion.matches) return;
-    ANIMATIONS.forEach((item) => {
+    (compactMq.matches ? MOBILE_ANIMATIONS : ANIMATIONS).forEach((item) => {
       if (item.media && !matchMedia(item.media).matches) return;
       document.querySelectorAll(item.selector).forEach((node, index) => {
         const step = item.staggerGroup ? index % item.staggerGroup : index;
@@ -514,7 +525,8 @@
     const pager = list.querySelector('[data-pagination]');
     const allOnly = [...list.querySelectorAll('[data-projects-all]')];
     const noun = list.dataset.noun || 'project';
-    const limit = Number(list.dataset.limit) || 9;
+    // data-limit-compact: a smaller first batch on phones and tablets (Reviews)
+    const limit = (compactMq.matches && Number(list.dataset.limitCompact)) || Number(list.dataset.limit) || 9;
     const perPage = Number(list.dataset.perPage) || 0; // Blog: pages of N, the featured item on page 1
     const header = document.querySelector('[data-header]');
     let filter = 'all';

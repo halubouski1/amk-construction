@@ -2322,6 +2322,13 @@
   }
 }
 
+/* ================= Compact: calmer scroll animations (titles only, see MOBILE_ANIMATIONS) */
+@media (max-width: 1279.98px) {
+  html [data-aos="fade-up"] {
+    transform: translate3d(0, 24px, 0);
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {
