@@ -2990,7 +2990,8 @@ a.footer__link:focus-visible {
 }
 
 /* ================= Reviews (node 89:3049) */
-.page-hero--reviews .page-hero__lead {
+/* one line; the extra class beats the laptop copy of .page-hero--plain's 720px cap */
+.page-hero--plain.page-hero--reviews .page-hero__lead {
   max-width: none;
 }
 
