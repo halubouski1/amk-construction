@@ -32,6 +32,22 @@
 
     <!-- Article (node 89:5113 / 89:5284) -->
     <article class="article">
+      <!-- Phones and tablets: contents in a bar that sticks under the header while the text is read -->
+      <div class="toc-bar m-only" data-toc-bar>
+        <button class="toc-bar__toggle" type="button" aria-expanded="false" aria-controls="toc-bar-list">
+          <span class="toc-bar__label">In this guide</span>
+          <span class="toc-bar__current" data-toc-current>What happens week by week</span>
+          <span class="icon icon--chevron" aria-hidden="true"></span>
+        </button>
+        <div class="toc-bar__panel" id="toc-bar-list">
+          <nav class="toc-bar__list" aria-label="In this guide" data-toc>
+            <a class="toc-bar__link" href="#week-by-week">What happens week by week</a>
+            <a class="toc-bar__link" href="#slow-down">What can slow it down</a>
+            <a class="toc-bar__link" href="#on-schedule">How to keep it on schedule</a>
+          </nav>
+        </div>
+        <span class="toc-bar__progress" aria-hidden="true" data-toc-progress></span>
+      </div>
       <div class="container article__inner">
         <aside class="article__aside d-only">
           <nav class="toc" aria-label="In this guide" data-toc data-anchor-gap="16">

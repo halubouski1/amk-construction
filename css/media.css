@@ -4057,6 +4057,111 @@
   }
 }
 
+/* ================= Compact: article contents bar (not in Figma) */
+@media (max-width: 1279.98px) {
+  .toc-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 45; /* under the header, which slides over it */
+    translate: 0 calc(-100% - 4px);
+    background: var(--c-bg);
+    box-shadow: 0 10px 30px rgba(23, 23, 26, 0.06);
+    transition: translate 0.45s var(--ease);
+  }
+
+  /* under the header while it is shown, at the top of the screen when it hides */
+  .toc-bar.is-visible {
+    translate: 0 var(--header-h);
+  }
+
+  html:has(.header.is-hidden) .toc-bar.is-visible {
+    translate: 0 0;
+  }
+
+  .toc-bar__toggle {
+    display: flex;
+    align-items: center;
+    gap: calc(10px * var(--m));
+    width: 100%;
+    height: calc(52px * var(--m));
+    padding: 0 var(--gutter);
+    border-bottom: 1px solid var(--c-ink-08);
+    text-align: left;
+  }
+
+  .toc-bar__label {
+    flex: none;
+    font-size: calc(13px * var(--m));
+    line-height: 1.3;
+    color: var(--c-ink-60);
+  }
+
+  .toc-bar__current {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    font-size: calc(15px * var(--m));
+    font-weight: 500;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .toc-bar__toggle .icon {
+    --icon-size: calc(18px * var(--m));
+    color: var(--c-red);
+    transition: rotate 0.35s var(--ease);
+  }
+
+  .toc-bar.is-open .toc-bar__toggle .icon {
+    rotate: 180deg;
+  }
+
+  /* the list opens by animating its row from 0fr to 1fr */
+  .toc-bar__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s var(--ease);
+  }
+
+  .toc-bar.is-open .toc-bar__panel {
+    grid-template-rows: 1fr;
+  }
+
+  .toc-bar__list {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .toc-bar__link {
+    padding: calc(14px * var(--m)) var(--gutter);
+    border-bottom: 1px solid var(--c-ink-08);
+    font-size: calc(16px * var(--m));
+    line-height: 1.3;
+  }
+
+  .toc-bar__link[aria-current="true"] {
+    font-weight: 500;
+    color: var(--c-red);
+  }
+
+  /* reading progress along the bottom edge */
+  .toc-bar__progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--c-red);
+    transform-origin: left center;
+    scale: var(--read, 0) 1;
+  }
+}
+
 /* large phones and small tablets: projects in two columns */
 @media (min-width: 600px) and (max-width: 768.98px) {
   .prj-grid {

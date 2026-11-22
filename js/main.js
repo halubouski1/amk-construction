@@ -628,25 +628,62 @@
      The current section is the last heading above 40% of the screen; the first one
      counts until then. aria-current="true" carries the red state. */
   function initToc() {
-    const toc = document.querySelector('[data-toc]');
-    if (!toc) return;
-    const links = [...toc.querySelectorAll('a[href^="#"]')];
-    const targets = links.map((link) => document.getElementById(link.hash.slice(1))).filter(Boolean);
+    const navs = [...document.querySelectorAll('[data-toc]')];
+    if (!navs.length) return;
+    const links = navs.flatMap((nav) => [...nav.querySelectorAll('a[href^="#"]')]);
+    const targets = [...new Set(links.map((link) => link.hash.slice(1)))]
+      .map((id) => document.getElementById(id)).filter(Boolean);
     if (!targets.length) return;
+
+    // phone/tablet bar ([data-toc-bar]): shows while the article text is on screen, names the
+    // current section, fills a reading-progress line and opens the section list
+    const bar = document.querySelector('[data-toc-bar]');
+    const body = document.querySelector('.article__body');
+    const toggle = bar?.querySelector('.toc-bar__toggle');
+    const current = bar?.querySelector('[data-toc-current]');
+    const progress = bar?.querySelector('[data-toc-progress]');
+    const setOpen = (open) => {
+      if (!bar) return;
+      bar.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+
     let ticking = false;
     const update = () => {
       ticking = false;
       const line = innerHeight * 0.4;
       let index = 0;
       targets.forEach((target, i) => { if (target.getBoundingClientRect().top < line) index = i; });
-      links.forEach((link, i) => {
-        if (i === index) link.setAttribute('aria-current', 'true');
+      const id = targets[index].id;
+      links.forEach((link) => {
+        if (link.hash.slice(1) === id) link.setAttribute('aria-current', 'true');
         else link.removeAttribute('aria-current');
       });
+      if (!bar || !body || !compactMq.matches) return;
+      const rect = body.getBoundingClientRect();
+      const reading = rect.top < innerHeight * 0.3 && rect.bottom > innerHeight * 0.5;
+      bar.classList.toggle('is-visible', reading);
+      if (!reading) setOpen(false);
+      current.textContent = links.find((link) => link.hash.slice(1) === id)?.textContent || '';
+      const read = Math.min(1, Math.max(0, (line - rect.top) / rect.height));
+      progress.style.setProperty('--read', read.toFixed(3));
     };
     addEventListener('scroll', () => {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }, { passive: true });
+
+    if (bar) {
+      toggle.addEventListener('click', () => setOpen(!bar.classList.contains('is-open')));
+      // a section link: close the list and keep the heading clear of the bar (initAnchorLinks
+      // reads data-anchor-gap; the header offset is added there on the way up)
+      bar.querySelector('[data-toc]').addEventListener('click', (e) => {
+        if (!e.target.closest('a')) return;
+        e.currentTarget.dataset.anchorGap = String(toggle.offsetHeight + 16);
+        setOpen(false);
+      });
+      document.addEventListener('click', (e) => { if (!bar.contains(e.target)) setOpen(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    }
     update();
   }
 
